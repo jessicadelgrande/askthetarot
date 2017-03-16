@@ -24,48 +24,48 @@ class App extends React.Component {
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.addQuestion = this.addQuestion.bind(this);
-		// this.question = this.question.bind(this);
-		// this.submit = this.submit.bind(this);
 	};
 
 	handleChange(e) {
-		console.log(e.target.value);
 		this.setState({
 			inputEmpty: e.target.value
 		});
 	}
 	addQuestion(e) {
 		e.preventDefault();
-		console.log("working");
+		const inputEmptyState = Array.from(this.state.question);
+		inputEmptyState.push(this.state.inputEmpty);
+		this.setState({
+			question: inputEmptyState
+		});
 	}
 	render() {
 		return (
 			<main>
 				<div className="inputContainer">
 					<h1>ASK THE TAROT</h1>
-					<form onSubmit={this.addQuestion} name="userQuestion">
+					<form onSubmit={this.addQuestion}>
 						<label htmlFor="inputQuestion">What would you like to ask the tarot?</label>
 						<textarea name="question" id="" cols="30" rows="10" value={this.state.inputEmpty} onChange={this.handleChange}>
-							{this.state.question.map((userInput,i) => {
-								return <div key={`userInput-${i}`}>{ userInput }</div>
-							})}
 						</textarea>
 						<button onClick={this.handleClick} className="submit">Ask the tarot</button>
 					</form>
-
 				</div>
+
+				<div className="returnedQuestion">
+					{this.state.question.map((userInput,i) => {
+						return <p key={`userInput-${i}`}>{ userInput }</p>
+						})}
+				</div>
+
 				<div className="cardContainer">
 					<div className="cardImage">
 						tarot card goes here
 					</div>
 				</div>
-				<div className="responseContainer">
-					<p>
-						The tarot says 
-						{/*
-						this.state.card.cardDescription
-						*/}
-					</p>
+
+				<div className="cardDescription">
+
 				</div>
 			{/*
 
