@@ -26,6 +26,15 @@ class App extends React.Component {
 		this.addQuestion = this.addQuestion.bind(this);
 	};
 
+	componentDidMount() {
+		const dbRef = firebase.database().ref();
+			console.log("yay data", dbRef);
+		dbRef.on('value', (data) => {
+			const usefulData = data.val();
+			console.log(usefulData);
+		});
+	}
+
 	handleChange(e) {
 		this.setState({
 			inputEmpty: e.target.value
@@ -83,10 +92,7 @@ class App extends React.Component {
 			</main>
 		)
 	}
-	componentDidMount() {
-		const dbRef = firebase.database().ref();
-			console.log("yay data", dbRef);
-	}
+
 
 	//	1. user enters a question in textbox
 	//	2. user clicks submit
