@@ -19,51 +19,38 @@ class App extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			submit: []
+			question: [],
+			inputEmpty: ""
 		}
-		this.submit = this.submit.bind(this);
+		this.handleChange = this.handleChange.bind(this);
+		this.addQuestion = this.addQuestion.bind(this);
 	};
-	handleClick(e) {
-		e.preventDefault();
-		console.log('I was clicked');
-	}
-	submit(e) {
-		e.preventDefault();
-		if(this.state.submit !== "") {
-			// const submit = 
-		}
-	}
+
 	handleChange(e) {
 		this.setState({
-			// [e.target.name]: e.target.value;
-			// e.target.name = references name that we have called the input below. Use the NAME of the value stored in order to access the proper key. This is easier than writing onChange for all events.
+			inputEmpty: e.target.value
 		});
 	}
-
-	// addTodo(e) {
-	// 	e.preventDefault();
-	// 	if(this.state.todo !== "") {
-	// 		// check to see if the todo state is empty
-	// 		const todoState = Array.from(this.state.todos);
-	// 		// make an array from this.state.todos (a copy)
-	// 		// never alter original state. copy it and add to it. never mutate original state.
-	// 		todoState.push(this.state.todo);
-	// 		this.setState({
-	// 			todos: todoState,
-	// 			todo: ""
-	// 		});
-	// 	}
-	// }
-
-	
+	addQuestion(e) {
+		e.preventDefault();
+		const addQuestionState = Array.from(this.state.question);
+		addQuestionState.push(this.state.inputEmpty);
+		this.setState({
+			question: addQuestionState
+		});
+	}
 	render() {
 		return (
 			<main>
 				<div className="inputContainer">
 					<h1>ASK THE TAROT</h1>
-					<form onSubmit={this.addQuestion} name="userQuestion">
+					<form onSubmit={this.addQuestion}>
 						<label htmlFor="inputQuestion">What would you like to ask the tarot?</label>
-						<textarea name="question" id="" cols="30" rows="10"></textarea>
+						<textarea name="question" id="" cols="30" rows="10" value={this.state.inputEmpty} onChange={this.handleChange}>
+							{this.state.question.map((inputEmpty,i) => {
+								return <p>{`inputEmpty-${i}`}</p>
+							})}
+						</textarea>
 						<button onClick={this.handleClick} className="submit">Ask the tarot</button>
 					</form>
 
