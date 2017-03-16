@@ -24,31 +24,30 @@ class App extends React.Component {
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.addQuestion = this.addQuestion.bind(this);
+		// this.question = this.question.bind(this);
+		// this.submit = this.submit.bind(this);
 	};
 
 	handleChange(e) {
+		console.log(e.target.value);
 		this.setState({
 			inputEmpty: e.target.value
 		});
 	}
 	addQuestion(e) {
 		e.preventDefault();
-		const addQuestionState = Array.from(this.state.question);
-		addQuestionState.push(this.state.inputEmpty);
-		this.setState({
-			question: addQuestionState
-		});
+		console.log("working");
 	}
 	render() {
 		return (
 			<main>
 				<div className="inputContainer">
 					<h1>ASK THE TAROT</h1>
-					<form onSubmit={this.addQuestion}>
+					<form onSubmit={this.addQuestion} name="userQuestion">
 						<label htmlFor="inputQuestion">What would you like to ask the tarot?</label>
 						<textarea name="question" id="" cols="30" rows="10" value={this.state.inputEmpty} onChange={this.handleChange}>
-							{this.state.question.map((inputEmpty,i) => {
-								return <p>{`inputEmpty-${i}`}</p>
+							{this.state.question.map((userInput,i) => {
+								return <div key={`userInput-${i}`}>{ userInput }</div>
 							})}
 						</textarea>
 						<button onClick={this.handleClick} className="submit">Ask the tarot</button>
