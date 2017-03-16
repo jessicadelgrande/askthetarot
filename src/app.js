@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ajax } from 'jquery';
+// import { ajax } from 'jquery';
 // import backOfCard from './some-directory/backOfCard.png';
 
 import getRandomNumber from './randomCard';
@@ -18,21 +18,55 @@ firebase.initializeApp(config);
 class App extends React.Component {
 	constructor() {
 		super();
-		// this.state = {
-		// 	card: []
-		// }
+		this.state = {
+			submit: []
+		}
+		this.submit = this.submit.bind(this);
 	};
+	handleClick(e) {
+		e.preventDefault();
+		console.log('I was clicked');
+	}
+	submit(e) {
+		e.preventDefault();
+		if(this.state.submit !== "") {
+			// const submit = 
+		}
+	}
+	handleChange(e) {
+		this.setState({
+			// [e.target.name]: e.target.value;
+			// e.target.name = references name that we have called the input below. Use the NAME of the value stored in order to access the proper key. This is easier than writing onChange for all events.
+		});
+	}
+
+	// addTodo(e) {
+	// 	e.preventDefault();
+	// 	if(this.state.todo !== "") {
+	// 		// check to see if the todo state is empty
+	// 		const todoState = Array.from(this.state.todos);
+	// 		// make an array from this.state.todos (a copy)
+	// 		// never alter original state. copy it and add to it. never mutate original state.
+	// 		todoState.push(this.state.todo);
+	// 		this.setState({
+	// 			todos: todoState,
+	// 			todo: ""
+	// 		});
+	// 	}
+	// }
+
 	
 	render() {
 		return (
 			<main>
 				<div className="inputContainer">
 					<h1>ASK THE TAROT</h1>
-					<form action="" name="userQuestion">
-						<label htmlFor="inputQuestion"></label>
-						<textarea name="inputQuestion" id="" cols="30" rows="10"></textarea>
-						<input type="submit" value="Ask the tarot" onClick={this.userClick}/>
+					<form onSubmit={this.addQuestion} name="userQuestion">
+						<label htmlFor="inputQuestion">What would you like to ask the tarot?</label>
+						<textarea name="question" id="" cols="30" rows="10"></textarea>
+						<button onClick={this.handleClick} className="submit">Ask the tarot</button>
 					</form>
+
 				</div>
 				<div className="cardContainer">
 					<div className="cardImage">
@@ -41,7 +75,10 @@ class App extends React.Component {
 				</div>
 				<div className="responseContainer">
 					<p>
-						The tarot says {this.state.card.cardDescription}
+						The tarot says 
+						{/*
+						this.state.card.cardDescription
+						*/}
 					</p>
 				</div>
 			{/*
@@ -62,9 +99,12 @@ class App extends React.Component {
 	}
 	componentDidMount() {
 		const dbRef = firebase.database().ref();
-		dbRef.onClick()
-			console.log("yay data", dbRef.onClick());
+			console.log("yay data", dbRef);
 	}
+
+	//	1. user enters a question in textbox
+	//	2. user clicks submit
+	//	3. user question is returned
 
 	userClick () {
 		// -- "MVP" we want a card from the Database
