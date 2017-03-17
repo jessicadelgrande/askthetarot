@@ -1,9 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { ajax } from 'jquery';
-// import backOfCard from './some-directory/backOfCard.png';
-
-import getRandomNumber from './randomCard';
+// import randomNumber from './RandomCard';
 
 const config = {
   apiKey: "AIzaSyAFTZPpg6ZN0PZiZv36NZWNkZ866zSZgAI",
@@ -21,9 +18,11 @@ class App extends React.Component {
 		this.state = {
 			question: [],
 			inputEmpty: ""
+			// cardName: ""
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.addQuestion = this.addQuestion.bind(this);
+		this.randomNumber = this.randomNumber.bind(this);
 	};
 
 	componentDidMount() {
@@ -48,6 +47,17 @@ class App extends React.Component {
 			question: inputEmptyState
 		});
 	}
+	randomNumber(e) {
+		let randomNumber = Math.floor(Math.random() * 3);
+		console.log(randomNumber);
+		let chooseCard = firebase.database().ref(randomNumber);
+		console.log(chooseCard);
+		chooseCard.on('value', (data) => {
+			let cardData = data.val();
+			console.log(cardData);
+		});
+	}
+
 	render() {
 		return (
 			<main>
@@ -57,7 +67,7 @@ class App extends React.Component {
 						<label htmlFor="inputQuestion">What would you like to ask the tarot?</label>
 						<textarea name="question" id="" cols="30" rows="10" value={this.state.inputEmpty} onChange={this.handleChange}>
 						</textarea>
-						<button onClick={this.handleClick} className="submit">Ask the tarot</button>
+						<button onClick={this.randomNumber} className="submit">Ask the tarot</button>
 					</form>
 				</div>
 
@@ -67,15 +77,17 @@ class App extends React.Component {
 						})}
 				</div>
 
-				<div className="cardContainer">
+				<div className="cardImage__container">
 					<div className="cardImage">
-						tarot card goes here
+						
 					</div>
 				</div>
 
-				<div className="cardDescription">
-
+				<div className="cardText__container">
+					<h2>{this.cardData.props.cardName}</h2>
 				</div>
+
+				
 			{/*
 
 			// Card Container

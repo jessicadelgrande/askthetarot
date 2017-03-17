@@ -1,5 +1,9 @@
-export default () => {
-	const randomNumber = Math.floor(Math.random() * cardName.length);
+import React from 'react';
 
-	return cardName[randomIndex];
+export default function randomNumber(props) {
+	return Math.floor(Math.random() * cardName.length);
+	console.log(randomNumber);
 }
+
+
+
