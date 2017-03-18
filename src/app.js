@@ -11,17 +11,22 @@ const config = {
 
 firebase.initializeApp(config);
 
+function randomNumber() {
+	const generatedNumber = Math.floor(Math.random() * 3);
+	return generatedNumber;
+}
+
 class App extends React.Component {
 	constructor() {
 		super();
 		this.state = {
 			question: [],
 			inputEmpty: "",
-			displayData: {}
+			displayData: []
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.addQuestion = this.addQuestion.bind(this);
-		this.randomNumber = this.randomNumber.bind(this);
+		// this.randomNumber = this.randomNumber.bind(this);
 	};
 
 	componentDidMount() {
@@ -32,8 +37,9 @@ class App extends React.Component {
 			const usefulData = data.val();
 			console.log(usefulData, "useful data");
 			this.setState({
-				displayData: usefulData
+				displayData: usefulData[randomNumber()]
 			});
+			console.log("here is the data", this.state.displayData);
 			// this gives me the value in English of the unreadable Firebase database objects
 		});
 	}
@@ -48,20 +54,10 @@ class App extends React.Component {
 		e.preventDefault();
 		const inputEmptyState = Array.from(this.state.question);
 		inputEmptyState.push(this.state.inputEmpty);
+		randomNumber();
 		this.setState({
 			question: inputEmptyState
 			// when the form is submitted, add the user input to the 'question' element
-		});
-	}
-	randomNumber(e) {
-		let randomNumber = Math.floor(Math.random() * 3);
-		console.log(randomNumber);
-		let chooseCard = firebase.database().ref(randomNumber);
-		console.log(chooseCard);
-		chooseCard.on('value', (data) => {
-			const cardData = data.val();
-			console.log(cardData);
-			// generate a random number and give me the associated card data
 		});
 	}
 
@@ -92,58 +88,15 @@ class App extends React.Component {
 
 				<div className="cardText">
 					<h2>
-						{this.state.displayData.cardName}
+						{this.state.displayData.description}
 					</h2>
 				</div>
-
-
-
-			{/*
-
-			// Card Container
-			<div>
-				{
-					this.state.card
-					? <img src={this.state.card.cardImage} alt="" />
-					: <img src={backOfCard} alt=""/>
-				}
-			</div>
-
-			*/}
 
 			</main>
 		)
 	}
 
 
-	//	1. user enters a question in textbox
-	//	2. user clicks submit
-	//	3. user question is returned
-
-	userClick () {
-		// -- "MVP" we want a card from the Database
-		// 1. We need a random number generated in order to get a tarot card back from firebase
-		// 2. We then need to pass that random number to a call to firebase, so it returns a card
-		// 3. Store the returned value from firebase in state
-		// 4. Render in a span or p the name of the card
-
-		// -- Render the image asset (and maybe explore animations??????)
-		// 1. Render the image in our right div
-		// 2. Toggle whether we have back of card or front of card based on if we have a card in state
-
-		// -- We want to save user input and returned card to their profile
-		/* "Payload" -- the data sent to Firebase
-			{
-				text: this.state.text, ''
-				card: this.state.card,
-				timestamp: new Date()
-			}
-
-		*/ 
-
-
-		// after ajax call comes back, set state of chosenCard to returned array, then chosenCard.cardName
-	}
 }
 
 
