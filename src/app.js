@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import randomNumber from './RandomCard';
 
 const config = {
   apiKey: "AIzaSyAFTZPpg6ZN0PZiZv36NZWNkZ866zSZgAI",
@@ -17,8 +16,8 @@ class App extends React.Component {
 		super();
 		this.state = {
 			question: [],
-			inputEmpty: ""
-			// cardName: ""
+			inputEmpty: "",
+			displayData: {}
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.addQuestion = this.addQuestion.bind(this);
@@ -28,15 +27,21 @@ class App extends React.Component {
 	componentDidMount() {
 		const dbRef = firebase.database().ref();
 			console.log("yay data", dbRef);
+			// this gives me the entire database in strange Firebase code
 		dbRef.on('value', (data) => {
 			const usefulData = data.val();
-			console.log(usefulData);
+			console.log(usefulData, "useful data");
+			this.setState({
+				displayData: usefulData
+			});
+			// this gives me the value in English of the unreadable Firebase database objects
 		});
 	}
 
 	handleChange(e) {
 		this.setState({
 			inputEmpty: e.target.value
+			// setState on the input when there is content added
 		});
 	}
 	addQuestion(e) {
@@ -45,6 +50,7 @@ class App extends React.Component {
 		inputEmptyState.push(this.state.inputEmpty);
 		this.setState({
 			question: inputEmptyState
+			// when the form is submitted, add the user input to the 'question' element
 		});
 	}
 	randomNumber(e) {
@@ -53,8 +59,9 @@ class App extends React.Component {
 		let chooseCard = firebase.database().ref(randomNumber);
 		console.log(chooseCard);
 		chooseCard.on('value', (data) => {
-			let cardData = data.val();
+			const cardData = data.val();
 			console.log(cardData);
+			// generate a random number and give me the associated card data
 		});
 	}
 
@@ -83,11 +90,14 @@ class App extends React.Component {
 					</div>
 				</div>
 
-				<div className="cardText__container">
-					<h2>{this.cardData.props.cardName}</h2>
+				<div className="cardText">
+					<h2>
+						{this.state.displayData.cardName}
+					</h2>
 				</div>
 
-				
+
+
 			{/*
 
 			// Card Container
@@ -130,6 +140,9 @@ class App extends React.Component {
 			}
 
 		*/ 
+
+
+		// after ajax call comes back, set state of chosenCard to returned array, then chosenCard.cardName
 	}
 }
 
