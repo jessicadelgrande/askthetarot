@@ -26,22 +26,26 @@ class App extends React.Component {
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.addQuestion = this.addQuestion.bind(this);
-		// this.randomNumber = this.randomNumber.bind(this);
+		this.getTarotData = this.getTarotData.bind(this);
 	};
 
-	componentDidMount() {
+	getTarotData() {
 		const dbRef = firebase.database().ref();
 			console.log("yay data", dbRef);
 			// this gives me the entire database in strange Firebase code
 		dbRef.on('value', (data) => {
 			const usefulData = data.val();
-			console.log(usefulData, "useful data");
+			console.log("useful data", usefulData);
 			this.setState({
 				displayData: usefulData[randomNumber()]
 			});
 			console.log("here is the data", this.state.displayData);
 			// this gives me the value in English of the unreadable Firebase database objects
 		});
+	}
+
+	componentDidMount() {
+
 	}
 
 	handleChange(e) {
@@ -61,6 +65,7 @@ class App extends React.Component {
 		});
 	}
 
+
 	render() {
 		return (
 			<main>
@@ -70,9 +75,10 @@ class App extends React.Component {
 						<label htmlFor="inputQuestion">What would you like to ask the tarot?</label>
 						<textarea name="question" id="" cols="30" rows="10" value={this.state.inputEmpty} onChange={this.handleChange}>
 						</textarea>
-						<button onClick={this.randomNumber} className="submit">Ask the tarot</button>
+						<button onClick={this.getTarotData} className="submit">Ask the tarot</button>
 					</form>
 				</div>
+
 
 				<div className="returnedQuestion">
 					{this.state.question.map((userInput,i) => {
@@ -80,16 +86,19 @@ class App extends React.Component {
 						})}
 				</div>
 
-				<div className="cardImage__container">
+				<div className="cardImage__container" id="test">
 					<div className="cardImage">
-						
+						<img src="" alt=""/>
 					</div>
 				</div>
 
 				<div className="cardText">
-					<h2>
+					<h3>
+						{this.state.displayData.cardName}
+					</h3>
+					<p>
 						{this.state.displayData.description}
-					</h2>
+					</p>
 				</div>
 
 			</main>
