@@ -1,0 +1,25 @@
+@import 'partials/setup';
+@import 'partials/variables';
+
+body {
+	font-family: 'Nunito Sans', sans-serif;
+	display: flex;
+	font-size: 62.5%;
+	background-color: thistle;
+}
+
+h1 {
+	font-style: italic;
+	font-weight: 300;
+	font-size: 3.5rem;
+}
+
+.inputContainer {
+	width: 50%;
+	margin: 20px;
+	// padding: 15px 40px 15px 40px;
+}
+
+.cardImageContainer {
+	width: 50%;
+}

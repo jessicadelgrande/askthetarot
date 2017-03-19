@@ -70,35 +70,39 @@ class App extends React.Component {
 		return (
 			<main>
 				<div className="inputContainer">
-					<h1>ASK THE TAROT</h1>
-					<form onSubmit={this.addQuestion}>
-						<label htmlFor="inputQuestion">What would you like to ask the tarot?</label>
-						<textarea name="question" id="" cols="30" rows="10" value={this.state.inputEmpty} onChange={this.handleChange}>
-						</textarea>
-						<button onClick={this.getTarotData} className="submit">Ask the tarot</button>
-					</form>
-				</div>
+
+					<div className="textContainer">
+						<h1>ASK THE TAROT TEST TEST</h1>
+						<form onSubmit={this.addQuestion}>
+							<label htmlFor="inputQuestion">What would you like to ask the tarot?</label>
+							<textarea name="question" id="" cols="30" rows="10" value={this.state.inputEmpty} onChange={this.handleChange}>
+							</textarea>
+							<button onClick={this.getTarotData} className="submit">Ask the tarot</button>
+						</form>
+
+						<div className="returnedQuestion">
+							{this.state.question.map((userInput,i) => {
+								return <p key={`userInput-${i}`}>{ userInput }</p>
+								})}
+						</div>
+
+						<div className="cardText">
+							<h3>
+								{this.state.displayData.cardName}
+							</h3>
+							<p>
+								{this.state.displayData.description}
+							</p>
+						</div>
+
+					</div>
+				</div> 
 
 
-				<div className="returnedQuestion">
-					{this.state.question.map((userInput,i) => {
-						return <p key={`userInput-${i}`}>{ userInput }</p>
-						})}
-				</div>
-
-				<div className="cardImage__container" id="test">
+				<div className="cardImageContainer">
 					<div className="cardImage">
 						<img src="" alt=""/>
 					</div>
-				</div>
-
-				<div className="cardText">
-					<h3>
-						{this.state.displayData.cardName}
-					</h3>
-					<p>
-						{this.state.displayData.description}
-					</p>
 				</div>
 
 			</main>
