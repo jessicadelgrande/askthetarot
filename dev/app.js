@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ToggleDisplay from 'react-toggle-display';
 
 const config = {
   apiKey: "AIzaSyAFTZPpg6ZN0PZiZv36NZWNkZ866zSZgAI",
@@ -22,11 +23,13 @@ class App extends React.Component {
 		this.state = {
 			question: [],
 			inputEmpty: "",
-			displayData: []
+			displayData: [],
+			clearInput: ""
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.addQuestion = this.addQuestion.bind(this);
 		this.getTarotData = this.getTarotData.bind(this);
+		this.clearTextArea = this.clearTextArea.bind(this);
 	};
 
 	getTarotData() {
@@ -54,6 +57,7 @@ class App extends React.Component {
 			// setState on the input when there is content added
 		});
 	}
+
 	addQuestion(e) {
 		e.preventDefault();
 		const inputEmptyState = Array.from(this.state.question);
@@ -65,6 +69,16 @@ class App extends React.Component {
 		});
 	}
 
+	clearTextArea(e) {
+		// clears textarea
+		e.preventDefault();
+		this.refs.clearMe.value = "";
+	}
+
+	// handleClick(e) {
+	// 	e.preventDefault();
+	// 	this.setState({ show: !this.state.show });
+	// }
 
 	render() {
 		return (
@@ -75,26 +89,24 @@ class App extends React.Component {
 						<h1>ASK THE TAROT</h1>
 						<form onSubmit={this.addQuestion}>
 							<label htmlFor="inputQuestion">What would you like to ask the tarot?</label>
-							<textarea name="question" id="" cols="30" rows="10" value={this.state.inputEmpty} onChange={this.handleChange}>
+							<textarea name="question" id="" ref="clearMe" value={this.state.inputEmpty} onChange={this.handleChange}>
 							</textarea>
+							<div className="returnedQuestion">
+								{this.state.question.map((userInput,i) => {
+									return <p key={`userInput-${i}`}>{ userInput }</p>
+									})}
+							</div>
+							<div className="cardText">
+								<h3>
+									{this.state.displayData.cardName}
+								</h3>
+								<p>
+									{this.state.displayData.description}
+								</p>
+							</div>
 							<button onClick={this.getTarotData} className="submit">Ask the tarot</button>
-							<button onClick={this.getTarotData} className="submit">Ask another question</button>
+							<button onClick={this.clearTextArea} className="">Ask another question</button>
 						</form>
-
-						<div className="returnedQuestion">
-							{this.state.question.map((userInput,i) => {
-								return <p key={`userInput-${i}`}>{ userInput }</p>
-								})}
-						</div>
-
-						<div className="cardText">
-							<h3>
-								{this.state.displayData.cardName}
-							</h3>
-							<p>
-								{this.state.displayData.description}
-							</p>
-						</div>
 
 					</div>
 				</div> 
@@ -110,9 +122,6 @@ class App extends React.Component {
 		)
 	}
 
-
-}
-
-
+} // class App extends React.Component
 
 ReactDOM.render(<App />, document.getElementById('app'));
