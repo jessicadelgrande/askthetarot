@@ -14,10 +14,16 @@ h1 {
 	font-size: 3.5rem;
 }
 
+label {
+	font-size: 2rem;
+}
+
 .inputContainer {
 	width: 50%;
-	margin: 20px;
-	// padding: 15px 40px 15px 40px;
+	padding: 20px;
+	text-align: right;
+	display: flex;
+	flex-direction: column;
 }
 
 .cardImageContainer {
