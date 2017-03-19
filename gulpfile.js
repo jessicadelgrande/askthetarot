@@ -38,7 +38,7 @@ gulp.task('javascript', () => {
         }))
         .pipe(source('app.js'))
         .pipe(buffer())
-        .pipe(gulp.dest('public/'))
+        .pipe(gulp.dest('./public'))
         .pipe(reload({stream:true}));
 });
 
@@ -52,7 +52,8 @@ gulp.task('browserSync', () => {
 });
 
 gulp.task('watch', () => {
-    gulp.watch('./dev/scripts/*.js', ['javascript'])
+    gulp.watch('./dev/**/*.js', ['javascript'])
+    // gulp.watch('./dev/**/*.js', ['javascript'])
     gulp.watch('./dev/styles/**/*.scss', ['styles'])
     gulp.watch('./*.html', reload);
 });

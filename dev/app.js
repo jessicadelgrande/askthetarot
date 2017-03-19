@@ -72,7 +72,7 @@ class App extends React.Component {
 				<div className="inputContainer">
 
 					<div className="textContainer">
-						<h1>ASK THE TAROT TEST TEST</h1>
+						<h1>ASK THE TAROT</h1>
 						<form onSubmit={this.addQuestion}>
 							<label htmlFor="inputQuestion">What would you like to ask the tarot?</label>
 							<textarea name="question" id="" cols="30" rows="10" value={this.state.inputEmpty} onChange={this.handleChange}>
