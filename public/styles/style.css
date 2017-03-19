@@ -133,7 +133,6 @@ body {
   display: -ms-flexbox;
   display: flex;
   font-size: 62.5%;
-  background-color: thistle;
   width: 100%; }
 
 main {
@@ -146,7 +145,14 @@ main {
 h1 {
   font-style: italic;
   font-weight: 300;
-  font-size: 4.5rem; }
+  font-size: 6.5rem;
+  line-height: 6rem;
+  background: #fcecfc;
+  background: -webkit-gradient(left top, right top, color-stop(0%, #fcecfc), color-stop(48%, #db1c9f), color-stop(100%, #c57dff));
+  background: linear-gradient(to right, #fcecfc 0%, #db1c9f 48%, #c57dff 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcecfc', endColorstr='#c57dff', GradientType=1 );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; }
 
 label {
   font-size: 1.5rem; }
@@ -155,11 +161,17 @@ textarea {
   width: 80%; }
 
 button {
-  width: 80%; }
+  width: 80%;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+  -moz-appearance: none;
+  -moz-border-radius: 0px;
+  padding: 10px;
+  margin-top: 30px; }
 
 .inputContainer {
   width: 50%;
-  padding: 20px;
+  padding: 30px;
   text-align: right;
   display: -ms-flexbox;
   display: flex;
@@ -167,4 +179,12 @@ button {
       flex-direction: column; }
 
 .cardImageContainer {
-  width: 50%; }
+  width: 50%;
+  padding: 30px; }
+
+.cardImage {
+  display: none;
+  transition: all 0.5s ease; }
+
+.cardImage.show {
+  display: block; }

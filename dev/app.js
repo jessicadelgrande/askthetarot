@@ -78,6 +78,7 @@ class App extends React.Component {
 							<textarea name="question" id="" cols="30" rows="10" value={this.state.inputEmpty} onChange={this.handleChange}>
 							</textarea>
 							<button onClick={this.getTarotData} className="submit">Ask the tarot</button>
+							<button onClick={this.getTarotData} className="submit">Ask another question</button>
 						</form>
 
 						<div className="returnedQuestion">
@@ -101,7 +102,7 @@ class App extends React.Component {
 
 				<div className="cardImageContainer">
 					<div className="cardImage">
-						<img src="" alt=""/>
+						<img src={`../../assets/${this.state.displayData.cardImage}`} alt=""/>
 					</div>
 				</div>
 
