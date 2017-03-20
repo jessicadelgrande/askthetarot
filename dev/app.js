@@ -32,8 +32,6 @@ class App extends React.Component {
 		this.addQuestion = this.addQuestion.bind(this);
 		this.getTarotData = this.getTarotData.bind(this);
 		this.clearTextArea = this.clearTextArea.bind(this);
-		this.clearTarotResults = this.clearTarotResults.bind(this);
-		this.askTarotClick = this.askTarotClick.bind(this);
 	};
 
 	getTarotData() {
@@ -48,6 +46,10 @@ class App extends React.Component {
 			});
 			console.log("here is the data", this.state.displayData);
 			// this gives me the value in English of the unreadable Firebase database objects
+		});
+		this.setState({
+			showCardImage: true,
+			showTextArea: false
 		});
 	}
 
@@ -79,22 +81,6 @@ class App extends React.Component {
 		this.refs.clearMe.value = "";
 	}
 
-	clearTarotResults(e) {
-		// clears cardTitle, description, cardImage.
-		e.preventDefault();
-		const disappearResults = Array.from(this.state.clearResults);
-		this.state.displayData.cardName = "";
-		this.state.displayData.description = "";
-		this.state.displayData.cardImage = "";
-	}
-
-	askTarotClick(e) {
-		e.preventDefault();
-		this.setState({
-			showTextArea: false
-		});
-	}
-
 	render() {
 		const shouldShowTextArea = () => {
 			if (this.state.showTextArea === true) {
@@ -105,15 +91,19 @@ class App extends React.Component {
 						</textarea>			
 					</div>
 				)
+			} else {
+				return null
 			}
 		}
-		const shouldHideTextArea = () => {
-			if (this.state.showTextArea === false) {
+		const shouldShowCardImage = () => {
+			if (this.state.showCardImage === true) {
 				return (
-					<div>
-						
+					<div className="cardImage">
+						<img src={`../../assets/${this.state.displayData.cardImage}`} alt=""/>
 					</div>
 				)
+			} else {
+				return null
 			}
 		}
 		return (
@@ -144,9 +134,7 @@ class App extends React.Component {
 				</div> 
 
 				<div className="cardImageContainer">
-					<div className="cardImage">
-						<img src={`../../assets/${this.state.displayData.cardImage}`} alt=""/>
-					</div>
+					{shouldShowCardImage()}
 				</div>
 			</main>
 		);
