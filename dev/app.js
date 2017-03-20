@@ -25,13 +25,16 @@ class App extends React.Component {
 			inputEmpty: "",
 			displayData: [],
 			clearResults: [],
-			showTextArea: true, 
-			showCardImage: false
+			showTextArea: true,
+			showCardName: false, 
+			showCardImage: false,
+			showAskTarotButton: true,
+			showAskAnotherQuestionButton: false
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.addQuestion = this.addQuestion.bind(this);
 		this.getTarotData = this.getTarotData.bind(this);
-		this.clearTextArea = this.clearTextArea.bind(this);
+		this.resetInputs = this.resetInputs.bind(this);
 	};
 
 	getTarotData() {
@@ -49,7 +52,10 @@ class App extends React.Component {
 		});
 		this.setState({
 			showCardImage: true,
-			showTextArea: false
+			showTextArea: false,
+			showCardName: true,
+			showAskTarotButton: false,
+			showAskAnotherQuestionButton: true
 		});
 	}
 
@@ -75,10 +81,17 @@ class App extends React.Component {
 		});
 	}
 
-	clearTextArea(e) {
+	resetInputs(e) {
 		// clears textarea
 		e.preventDefault();
 		this.refs.clearMe.value = "";
+		this.setState({
+			showCardImage: false,
+			showTextArea: true,
+			showCardName: false,
+			showAskTarotButton: true,
+			showAskAnotherQuestionButton: false
+		});
 	}
 
 	render() {
@@ -95,12 +108,41 @@ class App extends React.Component {
 				return null
 			}
 		}
+		const shouldShowCardName = () => {
+			if (this.state.showCardName === true) {
+				return (
+					<h3>
+						{this.state.displayData.cardName}
+					</h3>
+				)
+			} else {
+				return null
+			}
+		}
 		const shouldShowCardImage = () => {
 			if (this.state.showCardImage === true) {
 				return (
 					<div className="cardImage">
 						<img src={`../../assets/${this.state.displayData.cardImage}`} alt=""/>
 					</div>
+				)
+			} else {
+				return null
+			}
+		}
+		const shouldShowAskTarotButton = () => {
+			if (this.state.showAskTarotButton === true) {
+				return (
+				<button onClick={this.getTarotData} className="submit">Ask the tarot</button>
+				)
+			} else {
+				return null
+			}
+		}
+		const shouldShowAskAnotherQuestionButton = () => {
+			if (this.state.showAskAnotherQuestionButton === true) {
+				return (
+				<button onClick={this.resetInputs} className="">Ask another question</button>
 				)
 			} else {
 				return null
@@ -120,15 +162,13 @@ class App extends React.Component {
 									})}
 							</div>
 							<div className="cardText">
-								<h3>
-									{this.state.displayData.cardName}
-								</h3>
+								{shouldShowCardName()}
 								<p>
 									{this.state.displayData.description}
 								</p>
 							</div>
-							<button onClick={this.getTarotData} className="submit">Ask the tarot</button>
-							<button onClick={this.clearTextArea} className="">Ask another question</button>
+							{shouldShowAskTarotButton()}
+							{shouldShowAskAnotherQuestionButton()}
 						</form>
 					</div>
 				</div> 
