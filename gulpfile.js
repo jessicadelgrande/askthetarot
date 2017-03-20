@@ -13,7 +13,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const historyApiFallback = require('connect-history-api-fallback');
 
 gulp.task('styles', () => {
-    return gulp.src("./dev/styles/**/*.scss")
+    return gulp.dev('./dev/styles/**/*.scss')
     .pipe(plumber())
     .pipe(sass().on('error',notify.onError({
             message: "Error: <%= error.message %>",
@@ -52,9 +52,8 @@ gulp.task('browserSync', () => {
 });
 
 gulp.task('watch', () => {
-    gulp.watch('./dev/**/*.js', ['javascript'])
-    // gulp.watch('./dev/**/*.js', ['javascript'])
-    gulp.watch('./dev/styles/**/*.scss', ['styles'])
+    gulp.watch('./dev/**/*.js', ['javascript']);
+    gulp.watch('./dev/styles/**/*.scss', ['styles']);
     gulp.watch('./*.html', reload);
 });
 

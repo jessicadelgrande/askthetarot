@@ -7,6 +7,7 @@ body {
 	font-size: 62.5%;
 	// background-color: thistle;
 	width: 100%;
+	height: 100vh;
 }
 
 main {
@@ -31,6 +32,7 @@ h1 {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcecfc', endColorstr='#c57dff', GradientType=1 );
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
+	margin-bottom: 0px;
 }
 
 label {
@@ -61,6 +63,10 @@ button {
 	// }
 }
 
+img {
+	width: 100%;
+}
+
 .inputContainer {
 	width: 50%;
 	padding: 30px;
@@ -72,19 +78,14 @@ button {
 .cardImageContainer {
 	width: 50%;
 	padding: 30px;
+	display: flex;
+	justify-content: center;
 }
 
 .cardImage {
-	// width: 250px;
-	// position: absolute;
-	// top: 0;
-	// bottom: 0;
-	// right: -250px;
-	// background: #7fb5d7;
-	// transition: all 0.5s ease;
-	// padding: 0 15px;
+	width: 60%;
 }
 
-.cardImage.show {
-	// right: 0;
+.returnedQuestion {
+	// height: 100px;
 }

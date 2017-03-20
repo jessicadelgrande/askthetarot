@@ -28,6 +28,7 @@ class App extends React.Component {
 			showTextArea: true,
 			showCardName: false, 
 			showCardImage: false,
+			showReturnedQuestion: false,
 			showAskTarotButton: true,
 			showAskAnotherQuestionButton: false
 		}
@@ -54,6 +55,7 @@ class App extends React.Component {
 			showCardImage: true,
 			showTextArea: false,
 			showCardName: true,
+			showReturnedQuestion: true,
 			showAskTarotButton: false,
 			showAskAnotherQuestionButton: true
 		});
@@ -82,16 +84,9 @@ class App extends React.Component {
 	}
 
 	resetInputs(e) {
-		// clears textarea
-		e.preventDefault();
-		this.refs.clearMe.value = "";
-		this.setState({
-			showCardImage: false,
-			showTextArea: true,
-			showCardName: false,
-			showAskTarotButton: true,
-			showAskAnotherQuestionButton: false
-		});
+		// clears all tarot data by reloading the page
+		e.preventDefault();		
+		window.location = '';
 	}
 
 	render() {
@@ -108,6 +103,20 @@ class App extends React.Component {
 				return null
 			}
 		}
+		const shouldShowReturnedQuestion = () => {
+			if (this.state.showReturnedQuestion === true) {
+				return (
+					<div className="returnedQuestion">
+						{this.state.question.map((userInput,i) => {
+							return <p key={`userInput-${i}`}>{ userInput }</p>
+							})}
+					</div>
+				)
+			} else {
+				return null
+			}
+		}
+
 		const shouldShowCardName = () => {
 			if (this.state.showCardName === true) {
 				return (
@@ -142,7 +151,7 @@ class App extends React.Component {
 		const shouldShowAskAnotherQuestionButton = () => {
 			if (this.state.showAskAnotherQuestionButton === true) {
 				return (
-				<button onClick={this.resetInputs} className="">Ask another question</button>
+				<button onClick={this.resetInputs}>Ask another question</button>
 				)
 			} else {
 				return null
@@ -156,11 +165,7 @@ class App extends React.Component {
 						<h1>ASK THE TAROT</h1>
 						<form onSubmit={this.addQuestion}>
 							{shouldShowTextArea()}
-							<div className="returnedQuestion">
-								{this.state.question.map((userInput,i) => {
-									return <p key={`userInput-${i}`}>{ userInput }</p>
-									})}
-							</div>
+							{shouldShowReturnedQuestion()}
 							<div className="cardText">
 								{shouldShowCardName()}
 								<p>

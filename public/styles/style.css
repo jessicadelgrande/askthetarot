@@ -133,7 +133,8 @@ body {
   display: -ms-flexbox;
   display: flex;
   font-size: 62.5%;
-  width: 100%; }
+  width: 100%;
+  height: 100vh; }
 
 main {
   width: 100%;
@@ -152,7 +153,8 @@ h1 {
   background: linear-gradient(to right, #fcecfc 0%, #db1c9f 48%, #c57dff 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcecfc', endColorstr='#c57dff', GradientType=1 );
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; }
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0px; }
 
 label {
   font-size: 1.5rem; }
@@ -169,6 +171,9 @@ button {
   padding: 10px;
   margin-top: 30px; }
 
+img {
+  width: 100%; }
+
 .inputContainer {
   width: 50%;
   padding: 30px;
@@ -180,4 +185,11 @@ button {
 
 .cardImageContainer {
   width: 50%;
-  padding: 30px; }
+  padding: 30px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center; }
+
+.cardImage {
+  width: 60%; }
