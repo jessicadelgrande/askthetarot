@@ -24,12 +24,16 @@ class App extends React.Component {
 			question: [],
 			inputEmpty: "",
 			displayData: [],
-			clearInput: ""
+			clearResults: [],
+			showTextArea: true, 
+			showCardImage: false
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.addQuestion = this.addQuestion.bind(this);
 		this.getTarotData = this.getTarotData.bind(this);
 		this.clearTextArea = this.clearTextArea.bind(this);
+		this.clearTarotResults = this.clearTarotResults.bind(this);
+		this.askTarotClick = this.askTarotClick.bind(this);
 	};
 
 	getTarotData() {
@@ -75,12 +79,43 @@ class App extends React.Component {
 		this.refs.clearMe.value = "";
 	}
 
-	// handleClick(e) {
-	// 	e.preventDefault();
-	// 	this.setState({ show: !this.state.show });
-	// }
+	clearTarotResults(e) {
+		// clears cardTitle, description, cardImage.
+		e.preventDefault();
+		const disappearResults = Array.from(this.state.clearResults);
+		this.state.displayData.cardName = "";
+		this.state.displayData.description = "";
+		this.state.displayData.cardImage = "";
+	}
+
+	askTarotClick(e) {
+		e.preventDefault();
+		this.setState({
+			showTextArea: false
+		});
+	}
 
 	render() {
+		const shouldShowTextArea = () => {
+			if (this.state.showTextArea === true) {
+				return (
+					<div>
+						<label htmlFor="inputQuestion">What would you like to ask the tarot?</label>
+						<textarea name="question" id="" ref="clearMe" value={this.state.inputEmpty} onChange={this.handleChange}>
+						</textarea>			
+					</div>
+				)
+			}
+		}
+		const shouldHideTextArea = () => {
+			if (this.state.showTextArea === false) {
+				return (
+					<div>
+						
+					</div>
+				)
+			}
+		}
 		return (
 			<main>
 				<div className="inputContainer">
@@ -88,9 +123,7 @@ class App extends React.Component {
 					<div className="textContainer">
 						<h1>ASK THE TAROT</h1>
 						<form onSubmit={this.addQuestion}>
-							<label htmlFor="inputQuestion">What would you like to ask the tarot?</label>
-							<textarea name="question" id="" ref="clearMe" value={this.state.inputEmpty} onChange={this.handleChange}>
-							</textarea>
+							{shouldShowTextArea()}
 							<div className="returnedQuestion">
 								{this.state.question.map((userInput,i) => {
 									return <p key={`userInput-${i}`}>{ userInput }</p>
@@ -107,19 +140,16 @@ class App extends React.Component {
 							<button onClick={this.getTarotData} className="submit">Ask the tarot</button>
 							<button onClick={this.clearTextArea} className="">Ask another question</button>
 						</form>
-
 					</div>
 				</div> 
-
 
 				<div className="cardImageContainer">
 					<div className="cardImage">
 						<img src={`../../assets/${this.state.displayData.cardImage}`} alt=""/>
 					</div>
 				</div>
-
 			</main>
-		)
+		);
 	}
 
 } // class App extends React.Component
