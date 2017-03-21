@@ -1,3 +1,14 @@
+// TO DO: TUESDAY
+// prevent click if textarea is empty, generate alert
+// favicon
+// display question is not working
+// animate card flip (need back of card)
+// download remaining card images
+// enter remaining card descriptions
+// generate new JSON file and upload to Firebase
+// explore mouse tinkerbell trail
+// explore animate while waiting for page load
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ToggleDisplay from 'react-toggle-display';
@@ -13,8 +24,9 @@ const config = {
 firebase.initializeApp(config);
 
 function randomNumber() {
-	const generatedNumber = Math.floor(Math.random() * 3);
+	const generatedNumber = Math.floor(Math.random() * 22);
 	return generatedNumber;
+	console.log("here's the number", generatedNumber);
 }
 
 class App extends React.Component {
@@ -28,6 +40,7 @@ class App extends React.Component {
 			showTextArea: true,
 			showCardName: false, 
 			showCardImage: false,
+			showCardDescription: false,
 			showReturnedQuestion: false,
 			showAskTarotButton: true,
 			showAskAnotherQuestionButton: false
@@ -56,6 +69,7 @@ class App extends React.Component {
 			showTextArea: false,
 			showCardName: true,
 			showReturnedQuestion: true,
+			showCardDescription: true,
 			showAskTarotButton: false,
 			showAskAnotherQuestionButton: true
 		});
@@ -103,6 +117,7 @@ class App extends React.Component {
 				return null
 			}
 		}
+		// why isn't this working????? 
 		const shouldShowReturnedQuestion = () => {
 			if (this.state.showReturnedQuestion === true) {
 				return (
@@ -116,13 +131,23 @@ class App extends React.Component {
 				return null
 			}
 		}
-
 		const shouldShowCardName = () => {
 			if (this.state.showCardName === true) {
 				return (
 					<h3>
 						{this.state.displayData.cardName}
 					</h3>
+				)
+			} else {
+				return null
+			}
+		}
+		const shouldShowCardDescription = () => {
+			if (this.state.showCardDescription === true) {
+				return (
+				<p>
+					{this.state.displayData.description}
+				</p>
 				)
 			} else {
 				return null
@@ -168,9 +193,7 @@ class App extends React.Component {
 							{shouldShowReturnedQuestion()}
 							<div className="cardText">
 								{shouldShowCardName()}
-								<p>
-									{this.state.displayData.description}
-								</p>
+								{shouldShowCardDescription()}
 							</div>
 							{shouldShowAskTarotButton()}
 							{shouldShowAskAnotherQuestionButton()}

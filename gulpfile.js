@@ -13,7 +13,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const historyApiFallback = require('connect-history-api-fallback');
 
 gulp.task('styles', () => {
-    return gulp.dev('./dev/styles/**/*.scss')
+    return gulp.src('./dev/styles/**/*.scss')
     .pipe(plumber())
     .pipe(sass().on('error',notify.onError({
             message: "Error: <%= error.message %>",
