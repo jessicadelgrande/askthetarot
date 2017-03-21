@@ -148,19 +148,26 @@ h1 {
   font-weight: 300;
   font-size: 6.5rem;
   line-height: 6rem;
-  background: #fcecfc;
-  background: -webkit-gradient(left top, right top, color-stop(0%, #fcecfc), color-stop(48%, #db1c9f), color-stop(100%, #c57dff));
-  background: linear-gradient(to right, #fcecfc 0%, #db1c9f 48%, #c57dff 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcecfc', endColorstr='#c57dff', GradientType=1 );
+  background: #f0dfe1;
+  background: -webkit-gradient(left top, right top, color-stop(0%, #f0dfe1), color-stop(100%, #f06e7f));
+  background: linear-gradient(to right, #f0dfe1 0%, #f06e7f 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0dfe1', endColorstr='#f06e7f', GradientType=1 );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin: 15px 0px 15px 0px; }
+  margin: 15px 0px 20px 0px; }
 
 label {
-  font-size: 1.2rem; }
+  font-size: 1.3rem; }
 
 textarea {
-  width: 80%; }
+  width: 80%;
+  font-size: 1.1rem; }
+
+h3 {
+  font-size: 1.1rem; }
+
+p {
+  font-size: 1rem; }
 
 button {
   width: 80%;

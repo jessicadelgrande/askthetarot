@@ -21,26 +21,34 @@ h1 {
 	font-weight: 300;
 	font-size: 6.5rem;
 	line-height: 6rem;
-	// background: -webkit-linear-gradient(#eee, #333);
-	background: rgba(252,236,252,1);
-	background: -moz-linear-gradient(left, rgba(252,236,252,1) 0%, rgba(219,28,159,1) 48%, rgba(197,125,255,1) 100%);
-	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(252,236,252,1)), color-stop(48%, rgba(219,28,159,1)), color-stop(100%, rgba(197,125,255,1)));
-	background: -webkit-linear-gradient(left, rgba(252,236,252,1) 0%, rgba(219,28,159,1) 48%, rgba(197,125,255,1) 100%);
-	background: -o-linear-gradient(left, rgba(252,236,252,1) 0%, rgba(219,28,159,1) 48%, rgba(197,125,255,1) 100%);
-	background: -ms-linear-gradient(left, rgba(252,236,252,1) 0%, rgba(219,28,159,1) 48%, rgba(197,125,255,1) 100%);
-	background: linear-gradient(to right, rgba(252,236,252,1) 0%, rgba(219,28,159,1) 48%, rgba(197,125,255,1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcecfc', endColorstr='#c57dff', GradientType=1 );
+	background: rgba(240,223,225,1);
+	background: -moz-linear-gradient(left, rgba(240,223,225,1) 0%, rgba(240,110,127,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(240,223,225,1)), color-stop(100%, rgba(240,110,127,1)));
+	background: -webkit-linear-gradient(left, rgba(240,223,225,1) 0%, rgba(240,110,127,1) 100%);
+	background: -o-linear-gradient(left, rgba(240,223,225,1) 0%, rgba(240,110,127,1) 100%);
+	background: -ms-linear-gradient(left, rgba(240,223,225,1) 0%, rgba(240,110,127,1) 100%);
+	background: linear-gradient(to right, rgba(240,223,225,1) 0%, rgba(240,110,127,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0dfe1', endColorstr='#f06e7f', GradientType=1 );
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-	margin: 15px 0px 15px 0px;
+	margin: 15px 0px 20px 0px;
 }
 
 label {
-	font-size: 1.2rem;
+	font-size: 1.3rem;
 }
 
 textarea {
 	width: 80%;
+	font-size: 1.1rem;
+}
+
+h3 {
+	font-size: 1.1rem;
+}
+
+p {
+	font-size: 1rem;
 }
 
 button {

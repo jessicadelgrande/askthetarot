@@ -117,26 +117,18 @@ class App extends React.Component {
 				return null
 			}
 		}
-		// why isn't this working????? 
-		const shouldShowReturnedQuestion = () => {
-			if (this.state.showReturnedQuestion === true) {
-				return (
-					<div className="returnedQuestion">
-						{this.state.question.map((userInput,i) => {
-							return <p key={`userInput-${i}`}>{ userInput }</p>
-							})}
-					</div>
-				)
-			} else {
-				return null
-			}
-		}
 		const shouldShowCardName = () => {
 			if (this.state.showCardName === true) {
 				return (
-					<h3>
-						{this.state.displayData.cardName}
-					</h3>
+					<div>
+						<p>
+							{this.state.inputEmpty}
+						</p>
+						<h3>
+							{this.state.displayData.cardName}
+						</h3>
+					</div>
+
 				)
 			} else {
 				return null
@@ -167,7 +159,7 @@ class App extends React.Component {
 		const shouldShowAskTarotButton = () => {
 			if (this.state.showAskTarotButton === true) {
 				return (
-				<button onClick={this.getTarotData} className="submit">Ask the tarot</button>
+				<button onClick={this.getTarotData} className="submit" disabled={!this.state.inputEmpty}>Ask the tarot</button>
 				)
 			} else {
 				return null
@@ -190,7 +182,11 @@ class App extends React.Component {
 						<h1>ASK THE TAROT</h1>
 						<form onSubmit={this.addQuestion}>
 							{shouldShowTextArea()}
-							{shouldShowReturnedQuestion()}
+							<div className="returnedQuestion">
+								{this.state.question.map((userInput,i) => {
+									return <p key={`userInput-${i}`}>{ userInput }</p>
+									})}
+							</div>
 							<div className="cardText">
 								{shouldShowCardName()}
 								{shouldShowCardDescription()}
