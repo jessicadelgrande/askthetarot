@@ -1,11 +1,9 @@
 // TO DO: TUESDAY
-// favicon
 // animate card flip (need back of card)
 // download remaining card images
 // enter remaining card descriptions
 // generate new JSON file and upload to Firebase
 // explore mouse tinkerbell trail
-// media breakpoints
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -24,7 +22,6 @@ firebase.initializeApp(config);
 function randomNumber() {
 	const generatedNumber = Math.floor(Math.random() * 22);
 	return generatedNumber;
-	console.log("here's the number", generatedNumber);
 }
 
 class App extends React.Component {
@@ -42,8 +39,7 @@ class App extends React.Component {
 			showReturnedQuestion: false,
 			showAskTarotButton: true,
 			showAskAnotherQuestionButton: false,
-			// cardImage: false, 
-			fading: false
+			showFloralImage: true
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.addQuestion = this.addQuestion.bind(this);
@@ -53,15 +49,12 @@ class App extends React.Component {
 
 	getTarotData() {
 		const dbRef = firebase.database().ref();
-			console.log("yay data", dbRef);
 			// this gives me the entire database in strange Firebase code
 		dbRef.on('value', (data) => {
 			const usefulData = data.val();
-			console.log("useful data", usefulData);
 			this.setState({
 				displayData: usefulData[randomNumber()]
 			});
-			console.log("here is the data", this.state.displayData);
 			// this gives me the value in English of the unreadable Firebase database objects
 		});
 		this.setState({
@@ -72,8 +65,7 @@ class App extends React.Component {
 			showCardDescription: true,
 			showAskTarotButton: false,
 			showAskAnotherQuestionButton: true,
-			// cardImage: true, 
-			fading: true
+			showFloralImage: false
 		});
 	}
 
@@ -111,7 +103,7 @@ class App extends React.Component {
 				return (
 					<div>
 						<p>
-							When you're unable to find solutions on your own, the tarot can help guide you to find a new perspective.
+							When you're unable to find solutions on your own, the tarot can help you look at things from a new perspective.
 						</p>
 						<label htmlFor="inputQuestion">What would you like to ask the tarot?</label>
 						<textarea name="question" id="" ref="clearMe" value={this.state.inputEmpty} onChange={this.handleChange}>
@@ -127,16 +119,16 @@ class App extends React.Component {
 				return (
 					<div>
 						<p>
-							You wanted to know:
+							You asked:
 						</p>
 						<p>
-							{this.state.inputEmpty}
+							<span className="questionSpan">{this.state.inputEmpty}</span>
 						</p>
 						<h3>
-							{this.state.displayData.cardName}
+							Your card is <span className="displaySpan">{this.state.displayData.cardName}</span>
 						</h3>
 						<p>
-							
+							Here's what the tarot would like you to know:
 						</p>
 					</div>
 
@@ -159,19 +151,14 @@ class App extends React.Component {
 			}
 		}
 		const shouldShowCardImage = () => {
-			const fading = this.state.fading;
 			if (this.state.showCardImage === true) {
 				return (
-					<div className={ fading ? 'cardImage fading' : 'cardImage'}>
+					<div className="cardImage">
 						<img src={`../../assets/${this.state.displayData.cardImage}`} alt=""/>
 					</div>
 				)
 			} else {
-				return (
-					<div className={ fading ? 'cardImage reverseFading' : 'cardImage'}>
-						<img src="../assets/OGDRWX0_sm.jpg" alt=""/>
-					</div>
-				)
+				return null
 			}
 		}
 		const shouldShowAskTarotButton = () => {
@@ -194,33 +181,49 @@ class App extends React.Component {
 		}
 		return (
 			<main>
-				<div className="inputContainer">
 
-					<div className="textContainer">
-						<h1>ASK THE TAROT</h1>
-						<form onSubmit={this.addQuestion}>
-							{shouldShowTextArea()}
-							<div className="returnedQuestion">
-								{this.state.question.map((userInput,i) => {
-									return <p key={`userInput-${i}`}>{ userInput }</p>
-									})}
-							</div>
-							<div className="cardText">
-								{shouldShowCardName()}
-								{shouldShowCardDescription()}
-							</div>
-							{shouldShowAskTarotButton()}
-							{shouldShowAskAnotherQuestionButton()}
-						</form>
-					</div>
-				</div> 
-
-				<div className="cardImageContainer">
-					<div className="cardWrapper">
-						{shouldShowCardImage()}
+				<div className="wrapper">
+					<div className="inputContainer">
+						<div className="textContainer">
+							<h1>ASK THE TAROT</h1>
+							<form onSubmit={this.addQuestion}>
+								{shouldShowTextArea()}
+								<div className="returnedQuestion">
+									{this.state.question.map((userInput,i) => {
+										return <p key={`userInput-${i}`}>{ userInput }</p>
+										})}
+								</div>
+								<div className="cardText">
+									{shouldShowCardName()}
+									{shouldShowCardDescription()}
+								</div>
+								{shouldShowAskTarotButton()}
+								{shouldShowAskAnotherQuestionButton()}
+							</form>
+						</div>
+					</div> 
+					<div className="cardImageContainer">
+						<div className="cardWrapper">
+							{shouldShowCardImage()}
+						</div>
 					</div>
 				</div>
+
+				<footer>
+					<p>
+						&copy; 2017 Jessica Del Grande
+					</p>
+					<div className="attribution">
+						<p>
+							Card descriptions used with permission from <a href="http://innerhue.com/">Lauren Aletta</a>.<br />
+							Card artwork from the Rider-Waite-Smith tarot deck.
+						</p>
+					</div>
+				</footer>
+
 			</main>
+
+
 		);
 	}
 

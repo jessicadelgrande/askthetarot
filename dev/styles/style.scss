@@ -2,9 +2,14 @@
 @import 'partials/variables';
 @import 'partials/mixins';
 
+// **
+// Elements
+// **
+
 body {
 	font-family: $brandPrimary;
 	display: flex;
+	justify-content: center;
 	align-items: center;
 	font-size: 62.5%;
 	width: 100%;
@@ -14,9 +19,10 @@ main {
 	width: 100%;
 	padding-left: 30px;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
-	@include bp(smmed) {
-		flex-direction: column;
+	@include bp(med) {
+		// flex-direction: column;
 		padding: 15px;
 	}
 }
@@ -28,7 +34,7 @@ h1 {
 	line-height: 9vw;
 	margin: 15px 0px 20px 0px;
 	@include pinkGradient;
-	@include bp(smmed) {
+	@include bp(med) {
 		font-size: 13vw;
 		line-height: 11vw;
 	}
@@ -66,6 +72,28 @@ img {
 	width: 100%;
 }
 
+footer {
+	display: flex;
+	width: 90%;
+	height: 50px;
+	padding: 60px;
+	margin-top: 30px;
+	justify-content: space-between;
+}
+
+footer p {
+	font-size: 0.1rem;
+}
+
+// **
+// Classes
+// **
+
+.wrapper {
+	display: flex;
+	flex-direction: row;
+}
+
 .inputContainer {
 	// the half of the page that holds the input and text
 	width: 50%;
@@ -75,7 +103,7 @@ img {
 	flex-direction: column;
 	@include bp(lrg) {
 		padding: 30px;
-		@include bp(smmed) {
+		@include bp(med) {
 			width: 80%;
 			text-align: center;
 			padding: 15px;
@@ -83,13 +111,21 @@ img {
 	}
 }
 
+.questionSpan {
+	background: $colorSecondary;
+}
+
+.displaySpan {
+	border-bottom: 1px solid $colorPrimary;
+	padding-bottom: 2px;
+}
+
 .cardImageContainer {
 	// the half of the page that holds the card image
 	width: 50%;
 	padding-top: 45px;
 	padding-left: 15px;
-	align-self: flex-start;
-	@include bp(smmed) {
+	@include bp(med) {
 		width: 80%;
 		padding: 5px;
 		align-self: flex-end;
@@ -97,7 +133,8 @@ img {
 }
 
 .cardWrapper {
-	width: 65%;
+	width: 300px;
+	height: 528px;
 	border-radius: 5px;
 	-webkit-box-shadow: 5px 5px 15px -2px rgba(122,122,122,1);
 	-moz-box-shadow: 5px 5px 15px -2px rgba(122,122,122,1);
@@ -112,23 +149,33 @@ img {
 
 .cardImage {
 	width: 100%;
-	opacity: 0;
 }
 
-.reverseFading {
-	opacity: 0;
-	-webkit-transition: opacity 2s ease-in;
-	-moz-transition: opacity 2s ease-in;
-	-o-transition: opacity 2s ease-in;
-	-ms-transition: opacity 2s ease-in;
-	transition: opacity 2s ease-in;
-}
+// .cardImageSolid {
+// 	width: 100%;
+// 	opacity: 1;
+// }
 
-.fading {
-	opacity: 1;
-	-webkit-transition: opacity 2s ease-in;
-	-moz-transition: opacity 2s ease-in;
-	-o-transition: opacity 2s ease-in;
-	-ms-transition: opacity 2s ease-in;
-	transition: opacity 2s ease-in;
+// .reverseFading {
+// 	opacity: 0;
+// 	-webkit-transition: opacity 2s ease-out;
+// 	-moz-transition: opacity 2s ease-out;
+// 	-o-transition: opacity 2s ease-out;
+// 	-ms-transition: opacity 2s ease-out;
+// 	transition: opacity 2s ease-out;
+// }
+
+// .fading {
+// 	opacity: 1;
+// 	-webkit-transition: opacity 2s ease-in;
+// 	-moz-transition: opacity 2s ease-in;
+// 	-o-transition: opacity 2s ease-in;
+// 	-ms-transition: opacity 2s ease-in;
+// 	transition: opacity 2s ease-in;
+// }
+
+.attribution {
+	display: flex;
+	flex-direction: column;
+	text-align: right;
 }
