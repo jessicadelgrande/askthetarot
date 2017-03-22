@@ -1,17 +1,15 @@
 // TO DO: TUESDAY
-// prevent click if textarea is empty, generate alert
 // favicon
-// display question is not working
 // animate card flip (need back of card)
 // download remaining card images
 // enter remaining card descriptions
 // generate new JSON file and upload to Firebase
 // explore mouse tinkerbell trail
-// explore animate while waiting for page load
+// media breakpoints
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ToggleDisplay from 'react-toggle-display';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group' // ES6
 
 const config = {
   apiKey: "AIzaSyAFTZPpg6ZN0PZiZv36NZWNkZ866zSZgAI",
@@ -43,7 +41,9 @@ class App extends React.Component {
 			showCardDescription: false,
 			showReturnedQuestion: false,
 			showAskTarotButton: true,
-			showAskAnotherQuestionButton: false
+			showAskAnotherQuestionButton: false,
+			// cardImage: false, 
+			fading: false
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.addQuestion = this.addQuestion.bind(this);
@@ -71,12 +71,14 @@ class App extends React.Component {
 			showReturnedQuestion: true,
 			showCardDescription: true,
 			showAskTarotButton: false,
-			showAskAnotherQuestionButton: true
+			showAskAnotherQuestionButton: true,
+			// cardImage: true, 
+			fading: true
 		});
 	}
 
 	componentDidMount() {
-
+// stuff that fires when the app loads
 	}
 
 	handleChange(e) {
@@ -108,6 +110,9 @@ class App extends React.Component {
 			if (this.state.showTextArea === true) {
 				return (
 					<div>
+						<p>
+							When you're unable to find solutions on your own, the tarot can help guide you to find a new perspective.
+						</p>
 						<label htmlFor="inputQuestion">What would you like to ask the tarot?</label>
 						<textarea name="question" id="" ref="clearMe" value={this.state.inputEmpty} onChange={this.handleChange}>
 						</textarea>			
@@ -122,11 +127,17 @@ class App extends React.Component {
 				return (
 					<div>
 						<p>
+							You wanted to know:
+						</p>
+						<p>
 							{this.state.inputEmpty}
 						</p>
 						<h3>
 							{this.state.displayData.cardName}
 						</h3>
+						<p>
+							
+						</p>
 					</div>
 
 				)
@@ -137,23 +148,30 @@ class App extends React.Component {
 		const shouldShowCardDescription = () => {
 			if (this.state.showCardDescription === true) {
 				return (
-				<p>
-					{this.state.displayData.description}
-				</p>
+					<div>
+						<p>
+							{this.state.displayData.description}
+						</p>
+					</div>
 				)
 			} else {
 				return null
 			}
 		}
 		const shouldShowCardImage = () => {
+			const fading = this.state.fading;
 			if (this.state.showCardImage === true) {
 				return (
-					<div className="cardImage">
+					<div className={ fading ? 'cardImage fading' : 'cardImage'}>
 						<img src={`../../assets/${this.state.displayData.cardImage}`} alt=""/>
 					</div>
 				)
 			} else {
-				return null
+				return (
+					<div className={ fading ? 'cardImage reverseFading' : 'cardImage'}>
+						<img src="../assets/OGDRWX0_sm.jpg" alt=""/>
+					</div>
+				)
 			}
 		}
 		const shouldShowAskTarotButton = () => {
@@ -198,7 +216,9 @@ class App extends React.Component {
 				</div> 
 
 				<div className="cardImageContainer">
-					{shouldShowCardImage()}
+					<div className="cardWrapper">
+						{shouldShowCardImage()}
+					</div>
 				</div>
 			</main>
 		);

@@ -1,0 +1,58 @@
+@mixin pinkGradient {
+	background: rgba(240,223,225,1);
+	background: -moz-linear-gradient(left, rgba(240,223,225,1) 0%, rgba(240,110,127,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(240,223,225,1)), color-stop(100%, rgba(240,110,127,1)));
+	background: -webkit-linear-gradient(left, rgba(240,223,225,1) 0%, rgba(240,110,127,1) 100%);
+	background: -o-linear-gradient(left, rgba(240,223,225,1) 0%, rgba(240,110,127,1) 100%);
+	background: -ms-linear-gradient(left, rgba(240,223,225,1) 0%, rgba(240,110,127,1) 100%);
+	background: linear-gradient(to right, rgba(240,223,225,1) 0%, rgba(240,110,127,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0dfe1', endColorstr='#f06e7f', GradientType=1 );
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+@mixin buttonStyles {
+	width: 80%;
+	-webkit-appearance: none;
+	-webkit-border-radius: 0px;
+	-moz-appearance: none;
+	-moz-border-radius: 0px;
+	border: 2px solid $colorPrimary;
+	background-color: white;
+	padding: 10px;
+	margin-top: 30px;
+	text-transform: uppercase;
+	&:hover {
+		background-color: $colorPrimary;
+		border: 2px solid darkgrey;
+	}
+}
+
+@mixin bp($size) {
+ 
+	@if $size == 'lrg' {
+		@media (max-width: 990px) { 
+			@content; 
+		}
+	}
+
+	@if $size == 'med' {
+		@media (max-width: 800px) { 
+			@content; 
+		}
+	}
+
+	@if $size == 'smmed' {
+		@media (max-width: 615px) { 
+			@content; 
+		}
+	}
+
+	@if $size == 'sml' {
+		@media (max-width: 615px) { 
+			@content; 
+		}
+	}
+
+}
+

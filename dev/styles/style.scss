@@ -1,46 +1,50 @@
 @import 'partials/setup';
 @import 'partials/variables';
+@import 'partials/mixins';
 
 body {
-	font-family: 'Nunito Sans', sans-serif;
+	font-family: $brandPrimary;
 	display: flex;
+	align-items: center;
 	font-size: 62.5%;
-	// background-color: thistle;
 	width: 100%;
-	height: 100vh;
 }
 
 main {
 	width: 100%;
+	padding-left: 30px;
 	display: flex;
 	align-items: center;
+	@include bp(smmed) {
+		flex-direction: column;
+		padding: 15px;
+	}
 }
 
 h1 {
 	font-style: italic;
 	font-weight: 300;
-	font-size: 6.5rem;
-	line-height: 6rem;
-	background: rgba(240,223,225,1);
-	background: -moz-linear-gradient(left, rgba(240,223,225,1) 0%, rgba(240,110,127,1) 100%);
-	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(240,223,225,1)), color-stop(100%, rgba(240,110,127,1)));
-	background: -webkit-linear-gradient(left, rgba(240,223,225,1) 0%, rgba(240,110,127,1) 100%);
-	background: -o-linear-gradient(left, rgba(240,223,225,1) 0%, rgba(240,110,127,1) 100%);
-	background: -ms-linear-gradient(left, rgba(240,223,225,1) 0%, rgba(240,110,127,1) 100%);
-	background: linear-gradient(to right, rgba(240,223,225,1) 0%, rgba(240,110,127,1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0dfe1', endColorstr='#f06e7f', GradientType=1 );
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+	font-size: 10vw;
+	line-height: 9vw;
 	margin: 15px 0px 20px 0px;
+	@include pinkGradient;
+	@include bp(smmed) {
+		font-size: 13vw;
+		line-height: 11vw;
+	}
 }
 
 label {
 	font-size: 1.3rem;
+	padding-top: 10px;
 }
 
 textarea {
 	width: 80%;
 	font-size: 1.1rem;
+	@include bp(lrg) {
+		width: 95%;
+	}
 }
 
 h3 {
@@ -52,24 +56,10 @@ p {
 }
 
 button {
-	width: 80%;
-	-webkit-appearance: none;
-	-webkit-border-radius: 0px;
-	-moz-appearance: none;
-	-moz-border-radius: 0px;
-	// border: 2px solid $colorDk;
-	padding: 10px;
-	margin-top: 30px;
-	text-transform: uppercase;
-	// font-family: $secondaryFont;
-	// background-color: $colorDk;
-	// color: $colorLt;
-	// width: 150px;
-	// &:hover {
-	// 	background-color: $colorLt;
-	// 	color: $colorDk;
-	// 	border: 2px solid $colorDk;
-	// }
+	@include buttonStyles;
+	@include bp(lrg) {
+		width: 95%;
+	}
 }
 
 img {
@@ -77,24 +67,68 @@ img {
 }
 
 .inputContainer {
+	// the half of the page that holds the input and text
 	width: 50%;
 	padding: 30px 30px 30px 90px;
 	text-align: right;
 	display: flex;
 	flex-direction: column;
+	@include bp(lrg) {
+		padding: 30px;
+		@include bp(smmed) {
+			width: 80%;
+			text-align: center;
+			padding: 15px;
+		}
+	}
 }
 
 .cardImageContainer {
+	// the half of the page that holds the card image
 	width: 50%;
-	padding: 60px;
-	display: flex;
-	justify-content: left;
+	padding-top: 45px;
+	padding-left: 15px;
+	align-self: flex-start;
+	@include bp(smmed) {
+		width: 80%;
+		padding: 5px;
+		align-self: flex-end;
+	}
+}
+
+.cardWrapper {
+	width: 65%;
+	border-radius: 5px;
+	-webkit-box-shadow: 5px 5px 15px -2px rgba(122,122,122,1);
+	-moz-box-shadow: 5px 5px 15px -2px rgba(122,122,122,1);
+	box-shadow: 5px 5px 15px -2px rgba(122,122,122,1);
+	background-image: url("../../assets/OGDRWX0_med.jpg");
+	background-repeat: no-repeat;
+	background-position: cover;
+	@include bp(med) {
+		width: 75%;
+	}
 }
 
 .cardImage {
-	width: 60%;
+	width: 100%;
+	opacity: 0;
 }
 
-.returnedQuestion {
-	// height: 100px;
+.reverseFading {
+	opacity: 0;
+	-webkit-transition: opacity 2s ease-in;
+	-moz-transition: opacity 2s ease-in;
+	-o-transition: opacity 2s ease-in;
+	-ms-transition: opacity 2s ease-in;
+	transition: opacity 2s ease-in;
+}
+
+.fading {
+	opacity: 1;
+	-webkit-transition: opacity 2s ease-in;
+	-moz-transition: opacity 2s ease-in;
+	-o-transition: opacity 2s ease-in;
+	-ms-transition: opacity 2s ease-in;
+	transition: opacity 2s ease-in;
 }
