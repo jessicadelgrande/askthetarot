@@ -39,7 +39,7 @@ class App extends React.Component {
 			showReturnedQuestion: false,
 			showAskTarotButton: true,
 			showAskAnotherQuestionButton: false,
-			showFloralImage: true
+			showFloralImage: true,
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.addQuestion = this.addQuestion.bind(this);
@@ -65,7 +65,7 @@ class App extends React.Component {
 			showCardDescription: true,
 			showAskTarotButton: false,
 			showAskAnotherQuestionButton: true,
-			showFloralImage: false
+			showFloralImage: false,
 		});
 	}
 
@@ -153,14 +153,45 @@ class App extends React.Component {
 		const shouldShowCardImage = () => {
 			if (this.state.showCardImage === true) {
 				return (
-					<div className="cardImage">
-						<img src={`../../assets/${this.state.displayData.cardImage}`} alt=""/>
+					<div className="cardWrapperTarot">
+						<img src={`../../assets/${this.state.displayData.cardImage}`} alt="randomly selected tarot card"/>
 					</div>
 				)
 			} else {
 				return null
 			}
 		}
+
+		const shouldShowFloralImage = () => {
+			if (this.state.showFloralImage === true) {
+				return (
+					<div className="cardWrapperFloral">
+						<img src="../assets/OGDRWX0_new.jpg" alt="floral pattern"/>
+					</div>
+				)
+			}
+		}
+
+
+
+		// const shouldShowCardImage = () => {
+		// 	const fading = this.state.fading;
+		// 	if (this.state.showCardImage === true) {
+		// 		return (
+		// 			<div className={ fading ? 'cardImage fading' : 'cardImage'}>
+		// 				<img src={`../../assets/${this.state.displayData.cardImage}`} alt=""/>
+		// 			</div>
+		// 		)
+		// 	} else {
+		// 		return null
+		// 	}
+		// }
+
+		// const shouldHideFloralImage = () => {
+		// 	const 
+		// }
+
+
 		const shouldShowAskTarotButton = () => {
 			if (this.state.showAskTarotButton === true) {
 				return (
@@ -205,6 +236,7 @@ class App extends React.Component {
 					<div className="cardImageContainer">
 						<div className="cardWrapper">
 							{shouldShowCardImage()}
+							{shouldShowFloralImage()}
 						</div>
 					</div>
 				</div>

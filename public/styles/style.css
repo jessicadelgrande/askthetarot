@@ -262,20 +262,36 @@ footer p {
       -ms-flex-item-align: end;
           align-self: flex-end; } }
 
-.cardWrapper {
+.cardWrapperFloral {
   width: 300px;
   height: 528px;
   border-radius: 5px;
   box-shadow: 5px 5px 15px -2px #7a7a7a;
   background-image: url("../../assets/OGDRWX0_med.jpg");
   background-repeat: no-repeat;
-  background-position: cover; }
+  background-position: cover;
+  object-fit: cover; }
   @media (max-width: 800px) {
-    .cardWrapper {
+    .cardWrapperFloral {
       width: 75%; } }
 
-.cardImage {
-  width: 100%; }
+.cardWrapperTarot {
+  width: 300px;
+  height: 528px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px -2px #7a7a7a;
+  object-fit: cover; }
+  @media (max-width: 800px) {
+    .cardWrapperTarot {
+      width: 75%; } }
+
+.fadingOut {
+  opacity: 0;
+  transition: opacity 2s ease-out; }
+
+.fadingIn {
+  opacity: 1;
+  transition: opacity 2s ease-in; }
 
 .attribution {
   display: -ms-flexbox;
