@@ -22,7 +22,6 @@ main {
 	flex-direction: column;
 	align-items: center;
 	@include bp(med) {
-		// flex-direction: column;
 		padding: 15px;
 	}
 }
@@ -136,6 +135,8 @@ footer p {
 	width: 300px;
 	min-height: 510px;
 	border-radius: 5px;
+	-webkit-animation-duration: 3s;
+	-webkit-animation-delay: 1s;
 	-webkit-box-shadow: 5px 5px 15px -2px rgba(122,122,122,1);
 	-moz-box-shadow: 5px 5px 15px -2px rgba(122,122,122,1);
 	box-shadow: 5px 5px 15px -2px rgba(122,122,122,1);
@@ -154,34 +155,23 @@ footer p {
 	width: 300px;
 	min-height: 510px;
 	border-radius: 5px;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-delay: 1s;
 	-webkit-box-shadow: 5px 5px 15px -2px rgba(122,122,122,1);
 	-moz-box-shadow: 5px 5px 15px -2px rgba(122,122,122,1);
 	box-shadow: 5px 5px 15px -2px rgba(122,122,122,1);
 	font-size: 0;
 	overflow: hidden;
-	background-image: url("../../assets/OGDRWX0_med.jpg");
+	background-image: url("../../assets/OGDRWX0_fit.jpg");
 	@include bp(med) {
 		width: 75%;
 	}
 }
 
-// .fadingOut {
-// 	opacity: 0;
-// 	-webkit-transition: opacity 2s ease-out;
-// 	-moz-transition: opacity 2s ease-out;
-// 	-o-transition: opacity 2s ease-out;
-// 	-ms-transition: opacity 2s ease-out;
-// 	transition: opacity 2s ease-out;
-// }
-
-// .fadingIn {
-// 	opacity: 1;
-// 	-webkit-transition: opacity 2s ease-in;
-// 	-moz-transition: opacity 2s ease-in;
-// 	-o-transition: opacity 2s ease-in;
-// 	-ms-transition: opacity 2s ease-in;
-// 	transition: opacity 2s ease-in;
-// }
+.cardWrapperTarot img {
+	-webkit-animation-duration: 2s;
+	-webkit-animation-delay: 1s;
+}
 
 .attribution {
 	display: flex;

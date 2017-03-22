@@ -94,7 +94,7 @@ class App extends React.Component {
 
 	resetInputs(e) {
 		// clears all tarot data by reloading the page
-		e.preventDefault();		
+		e.preventDefault();
 		window.location = '';
 	}
 
@@ -154,30 +154,18 @@ class App extends React.Component {
 		const shouldShowCardImage = () => {
 			if (this.state.showCardImage === true) {
 				return (
-					<div className="cardWrapperTarot">
-						<img src={`../../assets/${this.state.displayData.cardImage}`} alt="randomly selected tarot card"/>
+					<div className="cardWrapperTarot animated fadeIn">
+						<img className="animated fadeIn" src={`../../assets/${this.state.displayData.cardImage}`} alt="randomly selected tarot card"/>
 					</div>
 				)
 			} else {
 				return (
-					<div className="cardWrapperFloral">
+					<div className="cardWrapperFloral animated fadeIn">
 						<img src="../assets/OGDRWX0_fit.jpg" alt="floral pattern"/>
 					</div>
 				)
 			}
 		}
-
-		// const shouldShowFloralImage = () => {
-		// 	if (this.state.showFloralImage === true) {
-		// 		return (
-		// 			<div className="cardWrapperFloral">
-		// 				<img src="../assets/OGDRWX0_fit.jpg" alt="floral pattern"/>
-		// 			</div>
-		// 		)
-		// 	} else {
-		// 		return null
-		// 	}
-		// }
 
 		const shouldShowAskTarotButton = () => {
 			if (this.state.showAskTarotButton === true) {

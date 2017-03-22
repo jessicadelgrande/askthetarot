@@ -197,7 +197,8 @@ button {
   padding: 10px;
   margin-top: 30px;
   text-transform: uppercase;
-  font-size: 0.7rem; }
+  font-size: 0.7rem;
+  transition: all 0.5s ease; }
   button:hover {
     background-color: #f0dfe1;
     border: 2px solid darkgrey; }
@@ -266,6 +267,8 @@ footer p {
   width: 300px;
   min-height: 510px;
   border-radius: 5px;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-delay: 1s;
   box-shadow: 5px 5px 15px -2px #7a7a7a;
   background-image: url("../../assets/OGDRWX0_fit.jpg");
   background-repeat: no-repeat;
@@ -281,13 +284,19 @@ footer p {
   width: 300px;
   min-height: 510px;
   border-radius: 5px;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-delay: 1s;
   box-shadow: 5px 5px 15px -2px #7a7a7a;
   font-size: 0;
   overflow: hidden;
-  background-image: url("../../assets/OGDRWX0_med.jpg"); }
+  background-image: url("../../assets/OGDRWX0_fit.jpg"); }
   @media (max-width: 800px) {
     .cardWrapperTarot {
       width: 75%; } }
+
+.cardWrapperTarot img {
+  -webkit-animation-duration: 2s;
+  -webkit-animation-delay: 1s; }
 
 .attribution {
   display: -ms-flexbox;
