@@ -264,34 +264,30 @@ footer p {
 
 .cardWrapperFloral {
   width: 300px;
-  height: 528px;
+  min-height: 510px;
   border-radius: 5px;
   box-shadow: 5px 5px 15px -2px #7a7a7a;
-  background-image: url("../../assets/OGDRWX0_med.jpg");
+  background-image: url("../../assets/OGDRWX0_fit.jpg");
   background-repeat: no-repeat;
+  background-size: 100%;
   background-position: cover;
-  object-fit: cover; }
+  font-size: 0;
+  overflow: hidden; }
   @media (max-width: 800px) {
     .cardWrapperFloral {
       width: 75%; } }
 
 .cardWrapperTarot {
   width: 300px;
-  height: 528px;
+  min-height: 510px;
   border-radius: 5px;
   box-shadow: 5px 5px 15px -2px #7a7a7a;
-  object-fit: cover; }
+  font-size: 0;
+  overflow: hidden;
+  background-image: url("../../assets/OGDRWX0_med.jpg"); }
   @media (max-width: 800px) {
     .cardWrapperTarot {
       width: 75%; } }
-
-.fadingOut {
-  opacity: 0;
-  transition: opacity 2s ease-out; }
-
-.fadingIn {
-  opacity: 1;
-  transition: opacity 2s ease-in; }
 
 .attribution {
   display: -ms-flexbox;

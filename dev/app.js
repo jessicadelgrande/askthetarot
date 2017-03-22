@@ -4,6 +4,7 @@
 // enter remaining card descriptions
 // generate new JSON file and upload to Firebase
 // explore mouse tinkerbell trail
+// why do images not fit to container size?
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -158,39 +159,25 @@ class App extends React.Component {
 					</div>
 				)
 			} else {
-				return null
-			}
-		}
-
-		const shouldShowFloralImage = () => {
-			if (this.state.showFloralImage === true) {
 				return (
 					<div className="cardWrapperFloral">
-						<img src="../assets/OGDRWX0_new.jpg" alt="floral pattern"/>
+						<img src="../assets/OGDRWX0_fit.jpg" alt="floral pattern"/>
 					</div>
 				)
 			}
 		}
 
-
-
-		// const shouldShowCardImage = () => {
-		// 	const fading = this.state.fading;
-		// 	if (this.state.showCardImage === true) {
+		// const shouldShowFloralImage = () => {
+		// 	if (this.state.showFloralImage === true) {
 		// 		return (
-		// 			<div className={ fading ? 'cardImage fading' : 'cardImage'}>
-		// 				<img src={`../../assets/${this.state.displayData.cardImage}`} alt=""/>
+		// 			<div className="cardWrapperFloral">
+		// 				<img src="../assets/OGDRWX0_fit.jpg" alt="floral pattern"/>
 		// 			</div>
 		// 		)
 		// 	} else {
 		// 		return null
 		// 	}
 		// }
-
-		// const shouldHideFloralImage = () => {
-		// 	const 
-		// }
-
 
 		const shouldShowAskTarotButton = () => {
 			if (this.state.showAskTarotButton === true) {
@@ -236,7 +223,6 @@ class App extends React.Component {
 					<div className="cardImageContainer">
 						<div className="cardWrapper">
 							{shouldShowCardImage()}
-							{shouldShowFloralImage()}
 						</div>
 					</div>
 				</div>

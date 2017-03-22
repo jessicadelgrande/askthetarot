@@ -134,61 +134,54 @@ footer p {
 
 .cardWrapperFloral {
 	width: 300px;
-	height: 528px;
+	min-height: 510px;
 	border-radius: 5px;
 	-webkit-box-shadow: 5px 5px 15px -2px rgba(122,122,122,1);
 	-moz-box-shadow: 5px 5px 15px -2px rgba(122,122,122,1);
 	box-shadow: 5px 5px 15px -2px rgba(122,122,122,1);
-	background-image: url("../../assets/OGDRWX0_med.jpg");
+	background-image: url("../../assets/OGDRWX0_fit.jpg");
 	background-repeat: no-repeat;
+	background-size: 100%;
 	background-position: cover;
-	object-fit: cover;
+	font-size: 0;
+	overflow: hidden;
 	@include bp(med) {
 		width: 75%;
 	}
 }
-
-// .cardWrapperFloral img {
-// 	object-fit: cover;
-// }
 
 .cardWrapperTarot {
 	width: 300px;
-	height: 528px;
+	min-height: 510px;
 	border-radius: 5px;
 	-webkit-box-shadow: 5px 5px 15px -2px rgba(122,122,122,1);
 	-moz-box-shadow: 5px 5px 15px -2px rgba(122,122,122,1);
 	box-shadow: 5px 5px 15px -2px rgba(122,122,122,1);
-	object-fit: cover;
-	// background-image: url("../../assets/OGDRWX0_med.jpg");
-	// background-repeat: no-repeat;
-	// background-position: cover;
+	font-size: 0;
+	overflow: hidden;
+	background-image: url("../../assets/OGDRWX0_med.jpg");
 	@include bp(med) {
 		width: 75%;
 	}
 }
 
-// .cardWrapperTarot img {
-// 	object-fit: cover;
+// .fadingOut {
+// 	opacity: 0;
+// 	-webkit-transition: opacity 2s ease-out;
+// 	-moz-transition: opacity 2s ease-out;
+// 	-o-transition: opacity 2s ease-out;
+// 	-ms-transition: opacity 2s ease-out;
+// 	transition: opacity 2s ease-out;
 // }
 
-.fadingOut {
-	opacity: 0;
-	-webkit-transition: opacity 2s ease-out;
-	-moz-transition: opacity 2s ease-out;
-	-o-transition: opacity 2s ease-out;
-	-ms-transition: opacity 2s ease-out;
-	transition: opacity 2s ease-out;
-}
-
-.fadingIn {
-	opacity: 1;
-	-webkit-transition: opacity 2s ease-in;
-	-moz-transition: opacity 2s ease-in;
-	-o-transition: opacity 2s ease-in;
-	-ms-transition: opacity 2s ease-in;
-	transition: opacity 2s ease-in;
-}
+// .fadingIn {
+// 	opacity: 1;
+// 	-webkit-transition: opacity 2s ease-in;
+// 	-moz-transition: opacity 2s ease-in;
+// 	-o-transition: opacity 2s ease-in;
+// 	-ms-transition: opacity 2s ease-in;
+// 	transition: opacity 2s ease-in;
+// }
 
 .attribution {
 	display: flex;
