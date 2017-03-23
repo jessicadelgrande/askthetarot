@@ -91,6 +91,10 @@ footer p {
 .wrapper {
 	display: flex;
 	flex-direction: row;
+	@include bp(med) {
+		flex-direction: column;
+		align-items: center;
+	}
 }
 
 .inputContainer {

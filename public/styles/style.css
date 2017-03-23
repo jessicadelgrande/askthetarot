@@ -227,6 +227,12 @@ footer p {
   display: flex;
   -ms-flex-direction: row;
       flex-direction: row; }
+  @media (max-width: 800px) {
+    .wrapper {
+      -ms-flex-direction: column;
+          flex-direction: column;
+      -ms-flex-align: center;
+          align-items: center; } }
 
 .inputContainer {
   width: 50%;
