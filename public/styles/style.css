@@ -218,9 +218,21 @@ footer {
   margin-top: 30px;
   -ms-flex-pack: justify;
       justify-content: space-between; }
+  @media (max-width: 615px) {
+    footer {
+      -ms-flex-direction: column;
+          flex-direction: column;
+      -ms-flex-align: center;
+          align-items: center;
+      text-align: center;
+      padding: 15px;
+      margin-top: 10px; } }
 
 footer p {
   font-size: 0.1rem; }
+  @media (max-width: 615px) {
+    footer p {
+      text-align: center; } }
 
 .wrapper {
   display: -ms-flexbox;
@@ -285,6 +297,9 @@ footer p {
   @media (max-width: 800px) {
     .cardWrapperFloral {
       width: 75%; } }
+  @media (max-width: 800px) and (max-width: 615px) {
+    .cardWrapperFloral {
+      min-height: auto; } }
 
 .cardWrapperTarot {
   width: 300px;
@@ -299,6 +314,9 @@ footer p {
   @media (max-width: 800px) {
     .cardWrapperTarot {
       width: 75%; } }
+  @media (max-width: 800px) and (max-width: 615px) {
+    .cardWrapperTarot {
+      min-height: auto; } }
 
 .cardWrapperTarot img {
   -webkit-animation-duration: 2s;
