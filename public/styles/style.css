@@ -203,6 +203,8 @@ button {
     background-color: #f06e7f;
     color: white;
     border: 2px solid darkgrey; }
+    button:hover:focus {
+      outline: 2px solid #f0dfe1; }
   @media (max-width: 990px) {
     button {
       width: 80%; } }
