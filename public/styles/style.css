@@ -134,14 +134,11 @@ body {
   display: flex;
   -ms-flex-pack: center;
       justify-content: center;
-  -ms-flex-align: center;
-      align-items: center;
   font-size: 62.5%;
   width: 100%; }
 
 main {
-  width: 100%;
-  padding-left: 30px;
+  width: 95%;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
@@ -176,9 +173,12 @@ label {
 textarea {
   width: 80%;
   font-size: 1.1rem; }
-  @media (max-width: 990px) {
-    textarea {
-      width: 95%; } }
+  textarea:focus {
+    outline: none;
+    background: #f0dfe1; }
+    @media (max-width: 990px) {
+      textarea:focus {
+        width: 95%; } }
 
 h3 {
   font-size: 1.1rem; }
@@ -205,7 +205,7 @@ button {
     border: 2px solid darkgrey; }
   @media (max-width: 990px) {
     button {
-      width: 95%; } }
+      width: 80%; } }
 
 img {
   width: 100%; }
@@ -235,13 +235,15 @@ footer p {
     footer p {
       text-align: center; } }
 
-.wrapper {
+.wrapper__upper {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: row;
-      flex-direction: row; }
+      flex-direction: row;
+  -ms-flex-pack: center;
+      justify-content: center; }
   @media (max-width: 800px) {
-    .wrapper {
+    .wrapper__upper {
       -ms-flex-direction: column;
           flex-direction: column;
       -ms-flex-align: center;
@@ -322,6 +324,24 @@ footer p {
 .cardWrapperTarot img {
   -webkit-animation-duration: 2s;
   -webkit-animation-delay: 1s; }
+
+.wrapper__lower {
+  width: 80%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-align: center;
+      align-items: center;
+  margin-top: 20px; }
+
+.descriptionContainer__lower {
+  border: 1px solid darkgrey;
+  padding: 30px 70px;
+  width: 80%; }
+  @media (max-width: 800px) {
+    .descriptionContainer__lower {
+      padding: 30px; } }
 
 .attribution {
   display: -ms-flexbox;

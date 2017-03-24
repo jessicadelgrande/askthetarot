@@ -10,14 +10,14 @@ body {
 	font-family: $brandPrimary;
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	// align-items: center;
 	font-size: 62.5%;
 	width: 100%;
 }
 
 main {
-	width: 100%;
-	padding-left: 30px;
+	width: 95%;
+	// padding-left: 30px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -47,8 +47,12 @@ label {
 textarea {
 	width: 80%;
 	font-size: 1.1rem;
-	@include bp(lrg) {
-		width: 95%;
+	&:focus {
+		outline: none;
+		background: $colorSecondary;
+		@include bp(lrg) {
+			width: 95%;
+		}
 	}
 }
 
@@ -63,7 +67,7 @@ p {
 button {
 	@include buttonStyles;
 	@include bp(lrg) {
-		width: 95%;
+		width: 80%;
 	}
 }
 
@@ -98,9 +102,11 @@ footer p {
 // Classes
 // **
 
-.wrapper {
+.wrapper__upper {
+	// wraps both columns across the top of the viewport (.inputContainer and .cardImageContainer)
 	display: flex;
 	flex-direction: row;
+	justify-content: center;
 	@include bp(med) {
 		flex-direction: column;
 		align-items: center;
@@ -191,6 +197,23 @@ footer p {
 .cardWrapperTarot img {
 	-webkit-animation-duration: 2s;
 	-webkit-animation-delay: 1s;
+}
+
+.wrapper__lower {
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.descriptionContainer__lower {
+	border: 1px solid darkgrey;
+	padding: 30px 70px;
+	width: 80%;
+	@include bp(med) {
+		padding: 30px;
+	}
 }
 
 .attribution {

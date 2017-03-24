@@ -118,11 +118,8 @@ class App extends React.Component {
 							<span className="questionSpan">{this.state.inputEmpty}</span>
 						</p>
 						<h3>
-							Your card is <span className="displaySpan">{this.state.displayData.cardName}</span>
+							Your card is<br /><span className="displaySpan">{this.state.displayData.cardName}</span>
 						</h3>
-						<p>
-							Here's what the tarot would like you to know:
-						</p>
 					</div>
 
 				)
@@ -133,9 +130,12 @@ class App extends React.Component {
 		const shouldShowCardDescription = () => {
 			if (this.state.showCardDescription === true) {
 				return (
-					<div>
+					<div className="descriptionContainer__lower">
 						<p>
-							{this.state.displayData.description}
+							Here's what the tarot would like you to know:
+						</p>
+						<p>
+							<span className="questionSpan">{this.state.displayData.description}</span>
 						</p>
 					</div>
 				)
@@ -180,7 +180,7 @@ class App extends React.Component {
 		return (
 			<main>
 
-				<div className="wrapper">
+				<div className="wrapper__upper">
 					<div className="inputContainer">
 						<div className="textContainer">
 							<h1>ASK THE TAROT</h1>
@@ -193,10 +193,9 @@ class App extends React.Component {
 								</div>
 								<div className="cardText">
 									{shouldShowCardName()}
-									{shouldShowCardDescription()}
+									
 								</div>
 								{shouldShowAskTarotButton()}
-								{shouldShowAskAnotherQuestionButton()}
 							</form>
 						</div>
 					</div> 
@@ -205,6 +204,13 @@ class App extends React.Component {
 							{shouldShowCardImage()}
 						</div>
 					</div>
+				</div>
+
+				<div className="wrapper__lower">
+
+						{shouldShowCardDescription()}
+
+					{shouldShowAskAnotherQuestionButton()}
 				</div>
 
 				<footer>
