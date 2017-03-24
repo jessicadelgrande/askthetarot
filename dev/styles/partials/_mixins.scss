@@ -25,7 +25,8 @@
 	font-size: 0.7rem;
 	transition: all 0.5s ease;
 	&:hover {
-		background-color: $colorSecondary;
+		background-color: $colorPrimary;
+		color: white;
 		border: 2px solid darkgrey;
 	}
 }

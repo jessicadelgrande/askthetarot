@@ -1,11 +1,3 @@
-// TO DO: TUESDAY
-// animate card flip (need back of card)
-// download remaining card images
-// enter remaining card descriptions
-// generate new JSON file and upload to Firebase
-// explore mouse tinkerbell trail
-// why do images not fit to container size?
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group' // ES6
