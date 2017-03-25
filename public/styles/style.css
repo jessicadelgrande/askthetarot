@@ -336,6 +336,12 @@ footer p {
   -ms-flex-align: center;
       align-items: center;
   margin-top: 20px; }
+  @media (max-width: 800px) {
+    .wrapper__lower {
+      width: 90%; } }
+  @media (max-width: 800px) and (max-width: 615px) {
+    .wrapper__lower {
+      width: 95%; } }
 
 .descriptionContainer__lower {
   border: 1px solid darkgrey;
@@ -343,7 +349,12 @@ footer p {
   width: 80%; }
   @media (max-width: 800px) {
     .descriptionContainer__lower {
-      padding: 30px; } }
+      padding: 30px;
+      width: 90%; } }
+  @media (max-width: 800px) and (max-width: 615px) {
+    .descriptionContainer__lower {
+      padding: 15px;
+      width: 100%; } }
 
 .attribution {
   display: -ms-flexbox;

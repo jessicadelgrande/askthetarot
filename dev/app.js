@@ -118,7 +118,7 @@ class App extends React.Component {
 							<span className="questionSpan">{this.state.inputEmpty}</span>
 						</p>
 						<h3>
-							Your card is<br /><span className="displaySpan">{this.state.displayData.cardName}</span>
+							Your card is:<br /><span className="displaySpan">{this.state.displayData.cardName}</span>
 						</h3>
 					</div>
 
