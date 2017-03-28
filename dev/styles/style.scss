@@ -10,14 +10,12 @@ body {
 	font-family: $brandPrimary;
 	display: flex;
 	justify-content: center;
-	// align-items: center;
 	font-size: 62.5%;
 	width: 100%;
 }
 
 main {
 	width: 95%;
-	// padding-left: 30px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -47,12 +45,11 @@ label {
 textarea {
 	width: 80%;
 	font-size: 1.1rem;
+	border: 1px solid lightgrey;
+	margin-top: 10px;
 	&:focus {
 		outline: none;
 		background: $colorSecondary;
-		@include bp(lrg) {
-			width: 95%;
-		}
 	}
 }
 
@@ -95,6 +92,8 @@ footer p {
 	font-size: 0.5rem;
 	@include bp(med) {
 		font-size: 0.7rem;
+		text-align: center;
+		padding-bottom: 30px;
 	}
 }
 

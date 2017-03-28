@@ -172,13 +172,12 @@ label {
 
 textarea {
   width: 80%;
-  font-size: 1.1rem; }
+  font-size: 1.1rem;
+  border: 1px solid lightgrey;
+  margin-top: 10px; }
   textarea:focus {
     outline: none;
     background: #f0dfe1; }
-    @media (max-width: 990px) {
-      textarea:focus {
-        width: 95%; } }
 
 h3 {
   font-size: 1.1rem; }
@@ -235,7 +234,9 @@ footer p {
   font-size: 0.5rem; }
   @media (max-width: 800px) {
     footer p {
-      font-size: 0.7rem; } }
+      font-size: 0.7rem;
+      text-align: center;
+      padding-bottom: 30px; } }
 
 a {
   text-decoration: none;
