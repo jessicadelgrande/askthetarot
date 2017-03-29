@@ -280,7 +280,9 @@ a {
 
 .displaySpan {
   border-bottom: 1px solid #f06e7f;
-  padding-bottom: 2px; }
+  padding-bottom: 2px;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-delay: 1s; }
 
 .cardImageContainer {
   width: 50%;
