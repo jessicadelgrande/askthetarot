@@ -159,7 +159,7 @@ class App extends React.Component {
 			} else {
 				return (
 					<div className="cardWrapperFloral animated fadeIn">
-						<img src="../../assets/OGDRWX0_fit.jpg" alt="floral pattern"/>
+						<img src="assets/OGDRWX0_fit.jpg" alt="floral pattern"/>
 					</div>
 				)
 			}
