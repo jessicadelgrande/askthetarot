@@ -112,14 +112,19 @@ class App extends React.Component {
 			if (this.state.showCardName === true) {
 				return (
 					<div>
-						<p>
-							You asked:
-						</p>
-						<p>
-							<span className="questionSpan">{this.state.inputEmpty}</span>
-						</p>
+						<div className="questionReturn">
+							<p className="textReturn__paragraph">
+								You asked:
+							</p>
+							<p className="textReturn__paragraph">
+								<span className="questionSpan">{this.state.inputEmpty}</span>
+							</p>
+						</div>
 						<div>
-							<p className="nameReturn">Your card is:</p><h3><span className="displaySpan animated fadeIn">{this.state.displayData.cardName}</span></h3>
+							<p className="textReturn__paragraph">Your card is:</p><h3><span className="displaySpan animated fadeIn">{this.state.displayData.cardName}</span></h3>
+						</div>
+						<div className="textReturn__paragraph">
+							<a href="#description"><img src="assets/chevron-down.svg" alt=""/></a>
 						</div>
 					</div>
 
@@ -132,10 +137,10 @@ class App extends React.Component {
 			if (this.state.showCardDescription === true) {
 				return (
 					<div className="descriptionContainer__lower">
-						<p>
+						<p id="description">
 							Here's what the tarot would like you to know:
 						</p>
-						<p>
+						<p className="questionParagraph">
 							<span className="questionSpan">{this.state.displayData.description}</span>
 						</p>
 					</div>
@@ -153,8 +158,8 @@ class App extends React.Component {
 				)
 			} else {
 				return (
-					<div className="cardWrapperFloral">
-						<img src="assets/OGDRWX0_fit.jpg" alt="floral pattern"/>
+					<div className="cardWrapperFloral animated fadeIn">
+						<img src="../../assets/OGDRWX0_fit.jpg" alt="floral pattern"/>
 					</div>
 				)
 			}
@@ -194,7 +199,6 @@ class App extends React.Component {
 								</div>
 								<div className="cardText">
 									{shouldShowCardName()}
-									
 								</div>
 								{shouldShowAskTarotButton()}
 							</form>
@@ -208,9 +212,7 @@ class App extends React.Component {
 				</div>
 
 				<div className="wrapper__lower">
-
-						{shouldShowCardDescription()}
-
+					{shouldShowCardDescription()}
 					{shouldShowAskAnotherQuestionButton()}
 				</div>
 

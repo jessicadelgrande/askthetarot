@@ -171,7 +171,7 @@ label {
   padding-top: 10px; }
 
 textarea {
-  width: 80%;
+  width: 100%;
   font-size: 1.1rem;
   border: 1px solid lightgrey;
   margin-top: 10px;
@@ -179,15 +179,19 @@ textarea {
   textarea:focus {
     outline: none;
     background: #f0dfe1; }
+  @media (max-width: 615px) {
+    textarea {
+      width: 100%; } }
 
 h3 {
-  font-size: 1.1rem; }
+  font-size: 1.1rem;
+  margin-top: 0; }
 
 p {
   font-size: 1rem; }
 
 button {
-  width: 80%;
+  width: 100%;
   -webkit-appearance: none;
   -webkit-border-radius: 0px;
   -moz-appearance: none;
@@ -205,9 +209,6 @@ button {
     border: 2px solid darkgrey; }
     button:hover:focus {
       outline: 2px solid #f0dfe1; }
-  @media (max-width: 990px) {
-    button {
-      width: 80%; } }
 
 img {
   width: 100%; }
@@ -261,7 +262,7 @@ a {
 
 .inputContainer {
   width: 50%;
-  padding: 30px 30px 30px 90px;
+  padding: 30px 40px 30px 90px;
   text-align: right;
   display: -ms-flexbox;
   display: flex;
@@ -269,24 +270,46 @@ a {
       flex-direction: column; }
   @media (max-width: 990px) {
     .inputContainer {
-      padding: 30px; } }
+      padding: 30px;
+      text-align: right; } }
   @media (max-width: 990px) and (max-width: 888px) {
     .inputContainer {
       width: 80%;
       text-align: center;
       padding: 15px; } }
+  @media (max-width: 990px) and (max-width: 888px) and (max-width: 615px) {
+    .inputContainer {
+      width: 100%; } }
+
+.textReturn__paragraph {
+  margin: 0; }
+
+.textReturn__paragraph img {
+  width: 10px; }
+
+.questionReturn {
+  margin-bottom: 20px; }
 
 .questionSpan {
   background: #f0dfe1; }
-
-.nameReturn {
-  margin: 15px 0 0 0; }
 
 .displaySpan {
   border-bottom: 1px solid #f06e7f;
   padding-bottom: 2px;
   -webkit-animation-duration: 2s;
   -webkit-animation-delay: 1s; }
+
+.textareaParent {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-align: end;
+      align-items: flex-end; }
+  @media (max-width: 990px) {
+    .textareaParent {
+      -ms-flex-align: end;
+          align-items: flex-end; } }
 
 .cardImageContainer {
   width: 50%;
@@ -327,7 +350,8 @@ a {
   -webkit-animation-delay: 1s;
   box-shadow: 5px 5px 15px -2px #7a7a7a;
   font-size: 0;
-  overflow: hidden; }
+  overflow: hidden;
+  background-image: url("../../assets/OGDRWX0_fit.jpg"); }
   @media (max-width: 888px) {
     .cardWrapperTarot {
       width: 75%; } }
@@ -355,26 +379,16 @@ a {
     .wrapper__lower {
       width: 95%; } }
 
-.textareaParent {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-      flex-direction: column;
-  -ms-flex-align: center;
-      align-items: center; }
-
 .descriptionContainer__lower {
   border: 1px solid darkgrey;
-  padding: 30px 70px;
-  width: 80%; }
+  padding: 30px 100px;
+  width: 100%; }
   @media (max-width: 888px) {
     .descriptionContainer__lower {
-      padding: 30px;
-      width: 90%; } }
+      padding: 30px; } }
   @media (max-width: 888px) and (max-width: 615px) {
     .descriptionContainer__lower {
-      padding: 15px;
-      width: 100%; } }
+      padding: 15px; } }
 
 .attribution {
   display: -ms-flexbox;

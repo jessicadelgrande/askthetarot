@@ -43,7 +43,7 @@ label {
 }
 
 textarea {
-	width: 80%;
+	width: 100%;
 	font-size: 1.1rem;
 	border: 1px solid lightgrey;
 	margin-top: 10px;
@@ -52,10 +52,14 @@ textarea {
 		outline: none;
 		background: $colorSecondary;
 	}
+	@include bp(sml) {
+		width: 100%;
+	}
 }
 
 h3 {
 	font-size: 1.1rem;
+	margin-top: 0;
 }
 
 p {
@@ -64,9 +68,6 @@ p {
 
 button {
 	@include buttonStyles;
-	@include bp(lrg) {
-		width: 80%;
-	}
 }
 
 img {
@@ -124,26 +125,38 @@ a {
 .inputContainer {
 	// the half of the page that holds the input and text
 	width: 50%;
-	padding: 30px 30px 30px 90px;
+	padding: 30px 40px 30px 90px;
 	text-align: right;
 	display: flex;
 	flex-direction: column;
 	@include bp(lrg) {
 		padding: 30px;
+		text-align: right;
 		@include bp(med) {
 			width: 80%;
 			text-align: center;
 			padding: 15px;
+			@include bp(sml) {
+				width: 100%;
+			}
 		}
 	}
 }
 
-.questionSpan {
-	background: $colorSecondary;
+.textReturn__paragraph {
+	margin: 0;
 }
 
-.nameReturn {
-	margin: 15px 0 0 0;
+.textReturn__paragraph img {
+	width: 10px;
+}
+
+.questionReturn {
+	margin-bottom: 20px;
+}
+
+.questionSpan {
+	background: $colorSecondary;
 }
 
 .displaySpan {
@@ -151,6 +164,15 @@ a {
 	padding-bottom: 2px;
 	-webkit-animation-duration: 2s;
 	-webkit-animation-delay: 1s;
+}
+
+.textareaParent {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	@include bp(lrg) {
+		align-items: flex-end;
+	}
 }
 
 .cardImageContainer {
@@ -199,6 +221,7 @@ a {
 	box-shadow: 5px 5px 15px -2px rgba(122,122,122,1);
 	font-size: 0;
 	overflow: hidden;
+	background-image: url("../../assets/OGDRWX0_fit.jpg");
 	@include bp(med) {
 		width: 75%;
 		@include bp(sml) {
@@ -226,22 +249,14 @@ a {
 	}
 }
 
-.textareaParent {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
 .descriptionContainer__lower {
 	border: 1px solid darkgrey;
-	padding: 30px 70px;
-	width: 80%;
+	padding: 30px 100px;
+	width: 100%;
 	@include bp(med) {
 		padding: 30px;
-		width: 90%;
 		@include bp(sml) {
 			padding: 15px;
-			width: 100%;
 		}
 	}
 }
