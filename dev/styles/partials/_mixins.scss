@@ -43,7 +43,7 @@
 	}
 
 	@if $size == 'med' {
-		@media (max-width: 800px) { 
+		@media (max-width: 888px) { 
 			@content; 
 		}
 	}

@@ -47,6 +47,7 @@ textarea {
 	font-size: 1.1rem;
 	border: 1px solid lightgrey;
 	margin-top: 10px;
+	display: block;
 	&:focus {
 		outline: none;
 		background: $colorSecondary;
@@ -141,6 +142,10 @@ a {
 	background: $colorSecondary;
 }
 
+.nameReturn {
+	margin: 15px 0 0 0;
+}
+
 .displaySpan {
 	border-bottom: 1px solid $colorPrimary;
 	padding-bottom: 2px;
@@ -219,6 +224,12 @@ a {
 			width: 95%;
 		}
 	}
+}
+
+.textareaParent {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .descriptionContainer__lower {
