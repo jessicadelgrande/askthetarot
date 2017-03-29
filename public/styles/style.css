@@ -321,8 +321,7 @@ a {
   -webkit-animation-delay: 1s;
   box-shadow: 5px 5px 15px -2px #7a7a7a;
   font-size: 0;
-  overflow: hidden;
-  background-image: url("../../assets/OGDRWX0_fit.jpg"); }
+  overflow: hidden; }
   @media (max-width: 800px) {
     .cardWrapperTarot {
       width: 75%; } }
